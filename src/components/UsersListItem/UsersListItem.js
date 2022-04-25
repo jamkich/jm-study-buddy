@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const UserListItem = ({ userData: { average, name, attendance = "0%" } }) => (
+const UsersListItem = ({ userData: { average, name, attendance = "0%" } }) => (
   <li>
     <div>{average}</div>
     <div>
@@ -12,7 +12,7 @@ const UserListItem = ({ userData: { average, name, attendance = "0%" } }) => (
   </li>
 );
 
-UserListItem.propTypes = {
+UsersListItem.propTypes = {
   userData: PropTypes.shape({
     average: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -20,4 +20,4 @@ UserListItem.propTypes = {
   }),
 };
 
-export default UserListItem;
+export default UsersListItem;
