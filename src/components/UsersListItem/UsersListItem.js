@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const UserListItem = ({ userData: { average, name, attendance = "0%" } }) => (
+const UserListItem = ({ userData: { average, name, attendance = '0%' } }) => (
   <li>
     <div>{average}</div>
     <div>
