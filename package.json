@@ -18,9 +18,7 @@
     "eject": "react-scripts eject"
   },
   "lint-staged": {
-    "src/**/*.{js,json}": [
-      "prettier --write"
-    ]
+    "src/**/*.{js,json}": "prettier --write"
   },
   "husky": {
     "hooks": {
