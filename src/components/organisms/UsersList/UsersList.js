@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledList } from './UserList.style';
+import { StyledList } from './UserList.styles';
 import Title from 'components/atoms/Title/Title';
 import { UserShape } from 'types';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
