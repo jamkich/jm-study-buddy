@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const Wrapper = styled.nav`
   width: 100%;
@@ -8,6 +8,8 @@ export const Wrapper = styled.nav`
   flex-direction: column;
   border-right: 1px solid ${({ theme }) => theme.colors.darkPurple};
   padding: 30px 0;
+  grid-row: 1 / 3;
+  grid-column: 1 / 1;
 `;
 
 export const Logo = styled.div`
