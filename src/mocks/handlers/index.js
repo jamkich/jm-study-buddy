@@ -3,8 +3,15 @@ import { students } from 'mocks/data/studensts';
 import { groups } from 'mocks/data/groups';
 
 export const handlers = [
-  rest.get('/groups', (req, res, ctx) => {
+  rest.get('/groups', (_, res, ctx) => {
     return res(ctx.status(200), ctx.json({ groups }));
+  }),
+
+  rest.post('/students/search', (req, res, ctx) => {
+    const matchingStudents = req.body.inputValue
+      ? students.filter((student) => student.name.toLowerCase().includes(req.body.inputValue.toLowerCase()))
+      : [];
+    return res(ctx.status(200), ctx.json({ students: matchingStudents }));
   }),
 
   rest.get('/students/:group', (req, res, ctx) => {
