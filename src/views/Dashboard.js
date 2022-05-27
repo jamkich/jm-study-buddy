@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useParams, Link } from 'react-router-dom';
 import { Wrapper, TitleWrapper, GroupWrapper } from './Dashboard.styles';
@@ -7,10 +7,20 @@ import Title from 'components/atoms/Title/Title';
 import useStudents from 'hooks/useStudents';
 
 const Dashboard = () => {
+  const [groups, setGroups] = useState([]);
   const { id } = useParams();
-  const { groups } = useStudents();
+  const { getGroups } = useStudents();
 
-  if (!id && groups.length > 0) return <Navigate replace to={`/group/${groups[0]}`} />;
+  useEffect(() => {
+    (async () => {
+      const groups = await getGroups();
+      setGroups(groups);
+    })();
+    // eslint-disable-next-line
+  }, [getGroups]);
+
+  if (!id && groups > 0) return <Navigate replace to={`/group/${groups[0]}`} />;
+
   return (
     <Wrapper>
       <TitleWrapper>
