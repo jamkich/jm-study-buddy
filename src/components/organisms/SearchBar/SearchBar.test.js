@@ -1,7 +1,8 @@
-import { render, screen, fireEvent } from 'test-utils';
+import { render, screen, fireEvent, waitFor } from 'test-utils';
 import { setupServer } from 'msw/node';
 import { handlers } from 'mocks/handlers';
 import { SearchBar } from './SearchBar';
+import { toBeVisible } from '@testing-library/jest-dom';
 
 const server = setupServer(...handlers);
 
@@ -28,9 +29,9 @@ describe('Search Bar', () => {
     render(<SearchBar />);
     const input = screen.getByPlaceholderText('Search');
     fireEvent.change(input, { target: { value: 'ad' } });
-    fireEvent.change(input, { target: { value: '' } });
+    await screen.findByText(/Adam Ro/);
 
-    const adam = await screen.findByText(/Adam Ro/);
-    expect(adam).not.toBe();
+    fireEvent.change(input, { target: { value: '' } });
+    await waitFor(() => expect(screen.getByLabelText('results')).not.toBeVisible());
   });
 });
