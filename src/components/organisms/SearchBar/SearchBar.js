@@ -29,7 +29,7 @@ export const SearchBar = () => {
 
       <SearchWrapper {...getComboboxProps()}>
         <Input {...getInputProps()} name="Search" id="Search" placeholder="Search" />
-        <SearchResults isVisible={isOpen && matchingStudents.length} {...getMenuProps()}>
+        <SearchResults isVisible={isOpen && matchingStudents.length} {...getMenuProps()} aria-label="results">
           {isOpen &&
             matchingStudents.map((item, index) => (
               <SearchResultsItem {...getItemProps({ item, index })} key={item.id} isHighlighted={highlightedIndex === index}>
