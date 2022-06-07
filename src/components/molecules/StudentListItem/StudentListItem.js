@@ -4,9 +4,9 @@ import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
 import { StyledAverage, StyledInfo, Wrapper } from './StudentListItem.styles';
 import { UserShape } from 'types';
 
-const StudentListItem = ({ studentData: { average, name, attendance = '0%' } }) => {
+const StudentListItem = ({ studentData: { average, name, attendance = '0%' }, ...props }) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <StyledAverage value={average}>{average}</StyledAverage>
       <StyledInfo>
         <p>
