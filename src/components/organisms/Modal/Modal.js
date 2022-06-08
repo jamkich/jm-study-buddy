@@ -19,7 +19,7 @@ const Modal = ({ handleClose, children }) => {
   return ReactDOM.createPortal(
     <ModalWrapper>
       {children}
-      <Button onClick={handleClose}>Close </Button>
+      <Button onClick={handleClose}>Save</Button>
     </ModalWrapper>,
     modalNode
   );

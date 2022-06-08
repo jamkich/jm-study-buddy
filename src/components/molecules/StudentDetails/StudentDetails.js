@@ -1,16 +1,25 @@
 import React from 'react';
 import Title from 'components/atoms/Title/Title';
-import { StyledAverage } from '../StudentListItem/StudentListItem.styles';
+import { Wrapper, BigAverage, StyledDetails, StyledLabel, StyledInfo, StyledSubjectInfo } from './StudentDetails.styles';
+import Average from 'components/atoms/Average/Average';
 
-const StudentDetails = ({ student }) => {
+const StudentDetails = ({ student: { name, average, course, grades } }) => {
   return (
-    <div>
-      <Title>
-        {student.name} | Group {student.group}
-      </Title>
-      <p>{student.attendance}</p>
-      <StyledAverage value={student.average}>{student.average}</StyledAverage>
-    </div>
+    <Wrapper>
+      <BigAverage value={average}>{average}</BigAverage>
+      <Title isBig>{name}</Title>
+      <StyledDetails>
+        <StyledLabel>Course:</StyledLabel>
+        <StyledInfo isBig>{course}</StyledInfo>
+        <StyledLabel>Average grades:</StyledLabel>
+        {grades.map(({ subject, grade }) => (
+          <StyledSubjectInfo key={subject}>
+            <StyledInfo>{subject}</StyledInfo>
+            <Average value={grade}>{grade}</Average>
+          </StyledSubjectInfo>
+        ))}
+      </StyledDetails>
+    </Wrapper>
   );
 };
 
