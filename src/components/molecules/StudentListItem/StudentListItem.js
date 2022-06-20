@@ -14,7 +14,7 @@ const StudentListItem = ({ studentData: { average, name, attendance = '0%' }, ..
           {name}
           <DeleteButton />
         </p>
-        <p>attendance: {attendance}</p>
+        <p>attendance: {attendance}%</p>
       </StyledInfo>
     </Wrapper>
   );
