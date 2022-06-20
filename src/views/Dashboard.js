@@ -9,29 +9,6 @@ import useModal from 'components/organisms/Modal/useModal';
 import StudentDetails from 'components/molecules/StudentDetails/StudentDetails';
 import Modal from 'components/organisms/Modal/Modal';
 
-const mockStudent = {
-  id: '1',
-  name: 'Adam Romański',
-  attendance: '39%',
-  average: '2.3',
-  group: 'A',
-  course: 'Economy and finances',
-  grades: [
-    {
-      subject: 'Modern Economy',
-      grade: '3.4',
-    },
-    {
-      subject: 'Trade and Logistics',
-      grade: '4.1',
-    },
-    {
-      subject: 'Business Philosophy',
-      grade: '5.0',
-    },
-  ],
-};
-
 const Dashboard = () => {
   const [groups, setGroups] = useState([]);
   const [currentStudent, setCurrentStudent] = useState([]);
@@ -51,8 +28,7 @@ const Dashboard = () => {
     setCurrentStudent(student);
     handleOpenModal();
   };
-
-  if (!id && groups.length > 0) return <Navigate replace to={`/group/${groups[0]}`} />;
+  if (!id && groups.length > 0) return <Navigate replace to={`/group/${groups[0].id}`} />;
 
   return (
     <Wrapper>
@@ -60,8 +36,8 @@ const Dashboard = () => {
         <Title as="h2">Groups: {id}</Title>
         <nav>
           {groups.map((group) => (
-            <Link key={group} to={`/group/${group}`}>
-              {group}{' '}
+            <Link key={group.id} to={`/group/${group.id}`}>
+              {group.id}{' '}
             </Link>
           ))}
         </nav>
@@ -70,7 +46,7 @@ const Dashboard = () => {
         <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
 
         <Modal isOpen={isOpen} handleClose={handleCloseModal}>
-          <StudentDetails student={mockStudent} />
+          <StudentDetails student={currentStudent} />
         </Modal>
       </GroupWrapper>
     </Wrapper>

@@ -4,6 +4,7 @@
   "private": true,
   "config-overrides-path": "node_modules/react-app-rewired/config-overrides.js",
   "dependencies": {
+    "@faker-js/faker": "^7.2.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
@@ -49,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@mswjs/data": "^0.10.1",
     "@storybook/addon-actions": "^6.5.6",
     "@storybook/addon-essentials": "^6.5.6",
     "@storybook/addon-interactions": "^6.5.6",
