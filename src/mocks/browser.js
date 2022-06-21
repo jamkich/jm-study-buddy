@@ -1,10 +1,10 @@
 import { setupWorker } from 'msw';
-import { db } from './db';
-import { handlers } from './handlers';
+import { handlers } from 'mocks/handlers';
+import { db } from 'mocks/db';
 
 export const worker = setupWorker(...handlers);
 
-const createStudents = () => {
+const seed = () => {
   db.group.create({
     id: 'A',
   });
@@ -15,14 +15,19 @@ const createStudents = () => {
     id: 'C',
   });
 
-  for (let i = 1; i < 15; i++) {
+  db.teacher.create();
+
+  for (let i = 0; i < 15; i++) {
     db.student.create();
+    db.event.create();
   }
 };
 
-createStudents();
+seed();
 
 window.mocks = {
+  seed,
   getStudents: () => db.student.getAll(),
+  getEvents: () => db.event.getAll(),
   getGroups: () => db.group.getAll(),
 };
