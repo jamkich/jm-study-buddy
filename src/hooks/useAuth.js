@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { useError } from './useError';
 
 const AuthContext = React.createContext({});
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const { dispatchError } = useError();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -32,7 +34,7 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data);
       localStorage.setItem('token', response.data.token);
     } catch (e) {
-      console.log(e);
+      dispatchError('Invalid email or password.');
     }
   };
 
