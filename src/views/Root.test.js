@@ -21,4 +21,18 @@ describe('Root component', () => {
 
     await screen.findByText(/Oops/);
   });
+
+  it('Display authenticated application', async () => {
+    render(<Root />);
+
+    const login = screen.getByLabelText('login');
+    const password = screen.getByLabelText('password');
+
+    fireEvent.change(login, { target: { value: 'teacher@studybuddy.com' } });
+    fireEvent.change(password, { target: { value: 'Test123!' } });
+
+    fireEvent.click(screen.getByText('Sign in'));
+
+    await screen.findByText(/Faye/);
+  });
 });
