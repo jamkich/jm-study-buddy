@@ -12,7 +12,7 @@ const StudentDetails = ({ student: { name, average, course, grades } }) => {
         <StyledLabel>Course:</StyledLabel>
         <StyledInfo isBig>{course}</StyledInfo>
         <StyledLabel>Average grades:</StyledLabel>
-        {grades.map(({ subject, grade }) => (
+        {grades.map(({ subject, average: grade }) => (
           <StyledSubjectInfo key={subject}>
             <StyledInfo>{subject}</StyledInfo>
             <Average value={grade}>{grade}</Average>

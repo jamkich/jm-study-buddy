@@ -44,7 +44,6 @@ const Dashboard = () => {
       </TitleWrapper>
       <GroupWrapper>
         <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
-
         <Modal isOpen={isOpen} handleClose={handleCloseModal}>
           <StudentDetails student={currentStudent} />
         </Modal>
