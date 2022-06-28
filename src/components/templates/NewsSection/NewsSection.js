@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArticleWrapper, NewsSectionHeader, Wrapper, TitleWrapper, ContentWrapper } from './NewsSection.styles';
 import { Button } from 'components/atoms/Button/Button';
 import axios from 'axios';
+import ErrorMessage from 'components/molecules/ErrorMessage/ErrorMessage';
 
 export const query = `
         {
@@ -18,7 +19,7 @@ export const query = `
 
 const NewsSection = () => {
   const [articles, setArticles] = useState([]);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     // console.log(process.env.REACT_APP_DATOCMS_TOKEN);
@@ -57,8 +58,10 @@ const NewsSection = () => {
             </ArticleWrapper>
           );
         })
+      ) : !error ? (
+        'Loading...'
       ) : (
-        <NewsSectionHeader>{!error ? 'Loading...' : error}</NewsSectionHeader>
+        <ErrorMessage message={error} />
       )}
     </Wrapper>
   );
