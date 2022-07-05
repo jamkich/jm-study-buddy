@@ -11,14 +11,19 @@ const StudentsList = ({ handleOpenStudentDetails }) => {
   const [students, setStudents] = useState([]);
   const { id } = useParams();
   const { getStudentsByGroup } = useStudents();
-  const { error, dispatchError } = useError();
+  const { error } = useError();
   useEffect(() => {
     (async () => {
       const students = await getStudentsByGroup(id);
-      if (!students.length) dispatchError('There is no students to display! Try again.');
       setStudents(students);
+      // setTimeout(() => {
+      //   if (students.length === 0) {
+      //     console.log(students);
+      //     dispatchError('There is no students to display! Try again.');
+      //   }
+      // }, 2000);
     })();
-  }, [getStudentsByGroup, id, dispatchError]);
+  }, [getStudentsByGroup, id]);
 
   return (
     <>
