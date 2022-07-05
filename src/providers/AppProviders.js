@@ -5,18 +5,22 @@ import { theme } from 'assets/styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { AuthProvider } from 'hooks/useAuth';
 import { ErrorProvider } from 'hooks/useError';
+import { store } from 'store/index';
+import { Provider } from 'react-redux';
 
 export const AppProviders = ({ children }) => {
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <ErrorProvider>
-          <AuthProvider>
-            <GlobalStyle />
-            {children}
-          </AuthProvider>
-        </ErrorProvider>
-      </ThemeProvider>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <ErrorProvider>
+            <AuthProvider>
+              <GlobalStyle />
+              {children}
+            </AuthProvider>
+          </ErrorProvider>
+        </ThemeProvider>
+      </Router>
+    </Provider>
   );
 };
