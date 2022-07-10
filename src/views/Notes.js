@@ -9,21 +9,19 @@ import { useForm } from 'react-hook-form';
 const Notes = () => {
   const notes = useSelector((state) => state.notes);
   const dispatch = useDispatch();
-  const { register, handleSubmit, watch, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
-  const handleAddNote = () => {
-    // dispatch(addNote({ title: `New note ${Math.floor(Math.random() * 20)}`, content: 'Lorem ipsum dolor sit amet' }));
-    const [title, content] = watch(['title', 'content']);
+  const handleAddNote = ({ title, content }) => {
     dispatch(addNote({ title, content }));
     reset();
   };
 
   return (
     <Wrapper>
-      <FormWrapper>
-        <StyledFormField label="Title" name="Title" id="title" {...register('title')} />
-        <StyledFormField isTextarea label="Content" name="Content" id="content" {...register('content')} />
-        <Button onClick={handleSubmit(handleAddNote)}>Add</Button>
+      <FormWrapper onSubmit={handleSubmit(handleAddNote)}>
+        <StyledFormField label="Title" name="Title" id="title" {...register('title', { required: true })} />
+        <StyledFormField isTextarea label="Content" name="Content" id="content" {...register('content', { required: true })} />
+        <Button type="submit">Add</Button>
       </FormWrapper>
       <NotesWrapper>
         {notes.length ? (
