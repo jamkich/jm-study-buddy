@@ -9,14 +9,14 @@ import { useForm } from 'react-hook-form';
 const Notes = () => {
   const notes = useSelector((state) => state.notes);
   const dispatch = useDispatch();
+  const { register, handleSubmit, watch, reset } = useForm();
 
   const handleAddNote = () => {
     // dispatch(addNote({ title: `New note ${Math.floor(Math.random() * 20)}`, content: 'Lorem ipsum dolor sit amet' }));
-    dispatch(addNote({ title: watch('title'), content: watch('content') }));
+    const [title, content] = watch(['title', 'content']);
+    dispatch(addNote({ title, content }));
     reset();
   };
-
-  const { register, handleSubmit, watch, reset } = useForm();
 
   return (
     <Wrapper>
