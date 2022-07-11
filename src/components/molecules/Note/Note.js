@@ -12,7 +12,6 @@ const Note = ({ title = 'Untitled', content = 'No content', id }) => {
   return (
     <NoteWrapper>
       <Title>{title}</Title>
-      {console.log(title)}
       <p>{content}</p>
       <StyledDeleteButton onClick={handleRemoveNote}></StyledDeleteButton>
     </NoteWrapper>
