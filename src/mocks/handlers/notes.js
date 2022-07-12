@@ -24,12 +24,24 @@ export const notes = [
         })
       );
     }
-
     return res(
-      ctx.status(404),
+      ctx.status(400),
       ctx.json({
         error: 'Every note should have title and content',
       })
     );
+  }),
+  rest.delete('/notes', (req, res, ctx) => {
+    if (req.body.id) {
+      const removedNote = db.note.delete({
+        where: {
+          id: {
+            equals: req.body.id,
+          },
+        },
+      });
+      return res(ctx.status(200), ctx.json({ removedNote }));
+    }
+    return res(ctx.status(400), ctx.json({ error: 'Provide ID of removed note' }));
   }),
 ];

@@ -19,6 +19,7 @@ const seed = () => {
 
   db.note.create();
   db.note.create();
+  console.log(db.note.getAll());
 
   for (let i = 0; i < 15; i++) {
     db.student.create();
