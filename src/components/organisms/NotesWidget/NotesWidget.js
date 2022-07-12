@@ -1,25 +1,27 @@
 import React from 'react';
 import { NotesWrapper, WidgetHandler, Wrapper } from './NotesWidget.styles';
 import Note from 'components/molecules/Note/Note';
-import { useSelector } from 'react-redux';
+import { useGetNotesQuery } from 'store';
 
 const NotesWidget = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const notes = useSelector((state) => state.notes);
+  const { data, isLoading } = useGetNotesQuery();
 
   const handleToggleWidget = () => setIsOpen((prevState) => !prevState);
   return (
     <Wrapper isOpen={isOpen}>
       <WidgetHandler onClick={handleToggleWidget}>notes</WidgetHandler>
-      <NotesWrapper>
-        {notes.length ? (
-          notes.map(({ id, title, content }) => {
-            return <Note key={id} title={title} content={content}></Note>;
-          })
-        ) : (
-          <p>Create your first Note</p>
-        )}
-      </NotesWrapper>
+      {isLoading ? (
+        <h3>Loading...</h3>
+      ) : (
+        <NotesWrapper>
+          {data.notes.length ? (
+            data.notes.map(({ title, content, id }) => <Note id={id} key={id} title={title} content={content} />)
+          ) : (
+            <p>Create your first note</p>
+          )}
+        </NotesWrapper>
+      )}
     </Wrapper>
   );
 };
