@@ -6,7 +6,12 @@ import { useForm } from 'react-hook-form';
 import { useGetNotesQuery, useAddNoteMutation } from 'store';
 
 const Notes = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const { data, isLoading } = useGetNotesQuery();
   const [addNote] = useAddNoteMutation();
 
@@ -22,8 +27,12 @@ const Notes = () => {
   return (
     <Wrapper>
       <FormWrapper onSubmit={handleSubmit(handleAddNote)}>
+        {errors.title && <span>Title is required</span>}
         <StyledFormField label="Title" name="Title" id="title" {...register('title', { required: true })} />
+
+        {errors.content && <span>Content is required</span>}
         <StyledFormField isTextarea label="Content" name="Content" id="content" {...register('content', { required: true })} />
+
         <Button type="submit">Add</Button>
       </FormWrapper>
       <NotesWrapper>
