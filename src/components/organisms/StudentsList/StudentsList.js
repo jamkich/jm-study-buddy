@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyledList } from './StudentsList.styles';
 import StudentListItem from 'components/molecules/StudentListItem/StudentListItem';
 import Title from 'components/atoms/Title/Title';

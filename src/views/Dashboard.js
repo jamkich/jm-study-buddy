@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useParams, Link } from 'react-router-dom';
 import { Wrapper, TitleWrapper, GroupWrapper } from './Dashboard.styles';
@@ -7,15 +7,19 @@ import Title from 'components/atoms/Title/Title';
 import useModal from 'components/organisms/Modal/useModal';
 import StudentDetails from 'components/molecules/StudentDetails/StudentDetails';
 import Modal from 'components/organisms/Modal/Modal';
-import { useGetGroupsQuery } from 'store';
+import { useGetGroupsQuery, useGetStudentsByIdMutation } from 'store';
 
 const Dashboard = () => {
   const { id } = useParams();
+  const [currentStudent, setCurrentStudent] = useState([]);
   const { isOpen, handleOpenModal, handleCloseModal } = useModal();
   const { data, isLoading } = useGetGroupsQuery();
+  const [getStudentsById] = useGetStudentsByIdMutation();
 
-  const handleOpenStudentDetails = async (id) => {
-    handleOpenModal(id);
+  const handleOpenStudentDetails = async (studentId) => {
+    const { data } = await getStudentsById(studentId);
+    setCurrentStudent(data.student);
+    handleOpenModal();
   };
 
   if (isLoading) {
@@ -47,7 +51,7 @@ const Dashboard = () => {
       <GroupWrapper>
         <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
         <Modal isOpen={isOpen} handleClose={handleCloseModal}>
-          <StudentDetails />
+          <StudentDetails student={currentStudent} />
         </Modal>
       </GroupWrapper>
     </Wrapper>

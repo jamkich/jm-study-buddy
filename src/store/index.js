@@ -14,5 +14,5 @@ export const store = configureStore({
     [groupsApi.reducerPath]: groupsApi.reducer,
     [studentsApi.reducerPath]: studentsApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(notesApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(notesApi.middleware).concat(studentsApi.middleware),
 });

@@ -5,9 +5,14 @@ export const studentsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '/',
   }),
+  tagTypes: ['Student'],
   endpoints: (builder) => ({
-    getStudentsById: builder.query({
-      query: (body) => `students/${body.id}`,
+    getStudentsById: builder.mutation({
+      query: (id) => ({
+        url: `students/${id}`,
+        method: 'GET',
+      }),
+      invalidatesTags: ['Student'],
     }),
 
     findStudents: builder.mutation({
@@ -16,8 +21,9 @@ export const studentsApi = createApi({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Student'],
     }),
   }),
 });
 
-export const { useGetStudentsByIdQuery, useFindStudentsMutation } = studentsApi;
+export const { useGetStudentsByIdMutation, useFindStudentsMutation } = studentsApi;
