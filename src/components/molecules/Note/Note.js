@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Title from 'components/atoms/Title/Title';
 import { NoteWrapper, StyledDeleteButton } from './Note.styles';
 import { useRemoveNoteMutation } from 'store';
@@ -14,7 +14,7 @@ const Note = ({ title = 'Untitled', content = 'No content', id }) => {
     <NoteWrapper>
       <Title>{title}</Title>
       <p>{content}</p>
-      <StyledDeleteButton onClick={handleRemoveNote}></StyledDeleteButton>
+      <StyledDeleteButton aria-label="Delete" onClick={handleRemoveNote}></StyledDeleteButton>
     </NoteWrapper>
   );
 };
