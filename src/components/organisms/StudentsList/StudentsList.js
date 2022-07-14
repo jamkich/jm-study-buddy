@@ -1,42 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { StyledList } from './StudentsList.styles';
 import StudentListItem from 'components/molecules/StudentListItem/StudentListItem';
 import Title from 'components/atoms/Title/Title';
-import useStudents from 'hooks/useStudents';
 import { useParams } from 'react-router-dom';
 import { useError } from 'hooks/useError';
 import ErrorMessage from 'components/molecules/ErrorMessage/ErrorMessage';
+import { useGetStudentsByGroupQuery } from 'store';
 
 const StudentsList = ({ handleOpenStudentDetails }) => {
-  const [students, setStudents] = useState([]);
   const { id } = useParams();
-  const { getStudentsByGroup } = useStudents();
+  const { data, isLoading } = useGetStudentsByGroupQuery({ id });
   const { error } = useError();
-  useEffect(() => {
-    (async () => {
-      const students = await getStudentsByGroup(id);
-      setStudents(students);
-      // setTimeout(() => {
-      //   if (students.length === 0) {
-      //     console.log(students);
-      //     dispatchError('There is no students to display! Try again.');
-      //   }
-      // }, 2000);
-    })();
-  }, [getStudentsByGroup, id]);
 
   return (
     <>
       <Title>Students list</Title>
-      <StyledList>
-        {!error ? (
-          students.map((userData) => (
-            <StudentListItem onClick={() => handleOpenStudentDetails(userData.id)} key={userData.id} studentData={userData} />
-          ))
-        ) : (
-          <ErrorMessage message={error} />
-        )}
-      </StyledList>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <StyledList>
+          {!error ? (
+            data.students.map((userData) => (
+              <StudentListItem onClick={() => handleOpenStudentDetails(userData.id)} key={userData.id} studentData={userData} />
+            ))
+          ) : (
+            <ErrorMessage message={error} />
+          )}
+        </StyledList>
+      )}
     </>
   );
 };

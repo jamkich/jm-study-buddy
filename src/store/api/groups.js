@@ -9,7 +9,10 @@ export const groupsApi = createApi({
     getGroups: builder.query({
       query: () => 'groups',
     }),
+    getStudentsByGroup: builder.query({
+      query: (body) => `groups/${body.id}`,
+    }),
   }),
 });
 
-export const { useGetGroupsQuery } = groupsApi;
+export const { useGetGroupsQuery, useGetStudentsByGroupQuery } = groupsApi;
