@@ -29,10 +29,8 @@ const Notes = () => {
       <FormWrapper onSubmit={handleSubmit(handleAddNote)}>
         {errors.title && <span>Title is required</span>}
         <StyledFormField label="Title" name="Title" id="title" {...register('title', { required: true })} />
-
         {errors.content && <span>Content is required</span>}
         <StyledFormField isTextarea label="Content" name="Content" id="content" {...register('content', { required: true })} />
-
         <Button type="submit">Add</Button>
       </FormWrapper>
       <NotesWrapper>
