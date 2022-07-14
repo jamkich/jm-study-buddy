@@ -5,6 +5,14 @@ import debounce from 'lodash.debounce';
 import { Input } from 'components/atoms/Input/Input';
 import { useFindStudentsMutation } from 'store';
 
+/* 
+TODO
+- use rtk to make search bar working
+- check all components looking for bugs/things to refactor 😝
+- make some tests
+other stuff.. we will see
+
+*/
 export const SearchBar = () => {
   const [matchingStudents, setMatchingStudents] = useState([]);
   const { data } = useFindStudentsMutation();
