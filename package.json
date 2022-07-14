@@ -28,6 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:e2e": "cypress open --project ./src/e2e/",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -55,6 +56,8 @@
     ]
   },
   "devDependencies": {
+    "@cypress/react": "^6.0.0",
+    "@cypress/webpack-dev-server": "^2.0.0",
     "@mswjs/data": "^0.10.1",
     "@storybook/addon-actions": "^6.5.6",
     "@storybook/addon-essentials": "^6.5.6",
@@ -66,9 +69,12 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.6",
     "@storybook/testing-library": "^0.0.11",
+    "@testing-library/cypress": "^8.0.3",
     "axios-mock-adapter": "^1.20.0",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "cypress": "^10.3.0",
     "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-storybook": "^0.5.12",
     "husky": "^4.3.8",
