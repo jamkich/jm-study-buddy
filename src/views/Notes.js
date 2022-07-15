@@ -1,5 +1,5 @@
 import { Button } from 'components/atoms/Button/Button';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormWrapper, NotesWrapper, StyledFormField, Wrapper } from 'views/Notes.styles';
 import Note from 'components/molecules/Note/Note';
 import { useForm } from 'react-hook-form';
@@ -15,10 +15,6 @@ const Notes = () => {
   const { data, isLoading } = useGetNotesQuery();
   const [addNote] = useAddNoteMutation();
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   const handleAddNote = ({ title, content }) => {
     addNote({ title, content });
     reset();
@@ -29,10 +25,8 @@ const Notes = () => {
       <FormWrapper onSubmit={handleSubmit(handleAddNote)}>
         {errors.title && <span>Title is required</span>}
         <StyledFormField label="Title" name="Title" id="title" {...register('title', { required: true })} />
-
         {errors.content && <span>Content is required</span>}
         <StyledFormField isTextarea label="Content" name="Content" id="content" {...register('content', { required: true })} />
-
         <Button type="submit">Add</Button>
       </FormWrapper>
       <NotesWrapper>

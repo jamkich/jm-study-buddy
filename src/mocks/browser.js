@@ -25,6 +25,7 @@ const seed = () => {
     db.student.create();
     db.event.create();
   }
+  console.log(db.student.getAll());
 };
 
 seed();

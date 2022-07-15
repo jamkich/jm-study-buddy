@@ -1,15 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SearchBarWrapper, StatusInfo, SearchWrapper, SearchResults, SearchResultsItem } from './SearchBar.styles';
 import { useCombobox } from 'downshift';
 import debounce from 'lodash.debounce';
 import { Input } from 'components/atoms/Input/Input';
-import useStudents from 'hooks/useStudents';
+import { useFindStudentsMutation } from 'store';
 
+/* 
+TODO
+- use rtk to make search bar working ✅
+- check all components looking for bugs/things to refactor 😝
+- make some tests
+other stuff.. we will see
+
+*/
 export const SearchBar = () => {
   const [matchingStudents, setMatchingStudents] = useState([]);
-  const { findStudents } = useStudents();
-  const getMatchingStudents = debounce(async ({ inputValue }) => {
-    const { students } = await findStudents(inputValue);
+  const [findStudents] = useFindStudentsMutation();
+
+  const getMatchingStudents = debounce(async (inputValue) => {
+    const {
+      data: { students },
+    } = await findStudents(inputValue);
     setMatchingStudents(students);
   }, 500);
 
