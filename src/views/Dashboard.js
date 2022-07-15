@@ -17,8 +17,10 @@ const Dashboard = () => {
   const [getStudentsById] = useGetStudentsByIdMutation();
 
   const handleOpenStudentDetails = async (studentId) => {
-    const { data } = await getStudentsById(studentId);
-    setCurrentStudent(data.student);
+    const {
+      data: { student },
+    } = await getStudentsById(studentId);
+    setCurrentStudent(student);
     handleOpenModal();
   };
 
