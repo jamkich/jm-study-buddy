@@ -1,5 +1,5 @@
 import { Button } from 'components/atoms/Button/Button';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormWrapper, NotesWrapper, StyledFormField, Wrapper } from 'views/Notes.styles';
 import Note from 'components/molecules/Note/Note';
 import { useForm } from 'react-hook-form';
@@ -14,10 +14,6 @@ const Notes = () => {
   } = useForm();
   const { data, isLoading } = useGetNotesQuery();
   const [addNote] = useAddNoteMutation();
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const handleAddNote = ({ title, content }) => {
     addNote({ title, content });
