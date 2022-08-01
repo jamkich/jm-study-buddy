@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Wrapper, TitleWrapper, GroupWrapper } from './Dashboard.styles';
 import StudentsList from 'components/organisms/StudentsList/StudentsList';
 import Title from 'components/atoms/Title/Title';
-import useModal from 'components/organisms/Modal/useModal';
+import { useModal } from 'hooks/useModal';
 import StudentDetails from 'components/molecules/StudentDetails/StudentDetails';
 import Modal from 'components/organisms/Modal/Modal';
 import { useGetGroupsQuery, useGetStudentsByIdMutation } from 'store';
@@ -12,6 +12,7 @@ import { useGetGroupsQuery, useGetStudentsByIdMutation } from 'store';
 const Dashboard = () => {
   const { id } = useParams();
   const [currentStudent, setCurrentStudent] = useState([]);
+  // const { isOpen, handleOpenModal, handleCloseModal } = useModal();
   const { isOpen, handleOpenModal, handleCloseModal } = useModal();
   const { data, isLoading } = useGetGroupsQuery();
   const [getStudentsById] = useGetStudentsByIdMutation();

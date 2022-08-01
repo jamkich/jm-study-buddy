@@ -7,6 +7,7 @@ import { AuthProvider } from 'hooks/useAuth';
 import { ErrorProvider } from 'hooks/useError';
 import { store } from 'store/index';
 import { Provider } from 'react-redux';
+import { ModalProvider } from 'hooks/useModal';
 
 export const AppProviders = ({ children }) => {
   return (
@@ -15,8 +16,10 @@ export const AppProviders = ({ children }) => {
         <ThemeProvider theme={theme}>
           <ErrorProvider>
             <AuthProvider>
-              <GlobalStyle />
-              {children}
+              <ModalProvider>
+                <GlobalStyle />
+                {children}
+              </ModalProvider>
             </AuthProvider>
           </ErrorProvider>
         </ThemeProvider>

@@ -21,7 +21,7 @@ const seed = () => {
   db.note.create();
   console.log(db.note.getAll());
 
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 14; i++) {
     db.student.create();
     db.event.create();
   }
