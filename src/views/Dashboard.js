@@ -4,25 +4,26 @@ import { useParams, Link } from 'react-router-dom';
 import { Wrapper, TitleWrapper, GroupWrapper } from './Dashboard.styles';
 import StudentsList from 'components/organisms/StudentsList/StudentsList';
 import Title from 'components/atoms/Title/Title';
-import { useModal } from 'hooks/useModal';
-import StudentDetails from 'components/molecules/StudentDetails/StudentDetails';
 import Modal from 'components/organisms/Modal/Modal';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetGroupsQuery, useGetStudentsByIdMutation } from 'store';
+import { openModal } from 'store';
 
 const Dashboard = () => {
   const { id } = useParams();
   const [currentStudent, setCurrentStudent] = useState([]);
-  // const { isOpen, handleOpenModal, handleCloseModal } = useModal();
-  const { isOpen, handleOpenModal, handleCloseModal } = useModal();
+
   const { data, isLoading } = useGetGroupsQuery();
   const [getStudentsById] = useGetStudentsByIdMutation();
+  const { isModalOpen } = useSelector((store) => store.modal);
+  const dispatch = useDispatch();
 
   const handleOpenStudentDetails = async (studentId) => {
     const {
       data: { student },
     } = await getStudentsById(studentId);
     setCurrentStudent(student);
-    handleOpenModal();
+    dispatch(openModal());
   };
 
   if (isLoading) {
@@ -53,9 +54,7 @@ const Dashboard = () => {
       </TitleWrapper>
       <GroupWrapper>
         <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
-        <Modal isOpen={isOpen} handleClose={handleCloseModal}>
-          <StudentDetails student={currentStudent} />
-        </Modal>
+        {}
       </GroupWrapper>
     </Wrapper>
   );

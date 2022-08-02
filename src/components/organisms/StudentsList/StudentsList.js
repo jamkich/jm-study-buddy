@@ -4,13 +4,12 @@ import StudentListItem from 'components/molecules/StudentListItem/StudentListIte
 import Title from 'components/atoms/Title/Title';
 import { useParams } from 'react-router-dom';
 import { useError } from 'hooks/useError';
-import ErrorMessage from 'components/molecules/ErrorMessage/ErrorMessage';
 import { useGetStudentsByGroupQuery } from 'store';
 
 const StudentsList = ({ handleOpenStudentDetails }) => {
   const { id } = useParams();
   const { data, isLoading } = useGetStudentsByGroupQuery({ id });
-  const { error } = useError();
+  const { error, dispatchError } = useError();
 
   return (
     <>
@@ -19,13 +18,11 @@ const StudentsList = ({ handleOpenStudentDetails }) => {
         <p>Loading...</p>
       ) : (
         <StyledList>
-          {!error ? (
-            data.students.map((userData) => (
-              <StudentListItem onClick={() => handleOpenStudentDetails(userData.id)} key={userData.id} studentData={userData} />
-            ))
-          ) : (
-            <ErrorMessage message={error} />
-          )}
+          {!error
+            ? data.students.map((userData) => (
+                <StudentListItem onClick={() => handleOpenStudentDetails(userData.id)} key={userData.id} studentData={userData} />
+              ))
+            : dispatchError(error)}
         </StyledList>
       )}
     </>

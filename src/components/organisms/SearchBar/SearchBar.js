@@ -4,19 +4,24 @@ import { useCombobox } from 'downshift';
 import debounce from 'lodash.debounce';
 import { Input } from 'components/atoms/Input/Input';
 import { useFindStudentsMutation } from 'store';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModal } from 'store';
 
 /* 
 TODO
 - use rtk to make search bar working ✅
 - looking for bugs/things to refactor 😝  HALF ✅
 - make some tests TODO
+- adding/removing users
 other stuff.. we will see
 
 */
 export const SearchBar = () => {
   const [matchingStudents, setMatchingStudents] = useState([]);
   const [findStudents] = useFindStudentsMutation();
-
+  const { isModalOpen } = useSelector((store) => store.modal);
+  const dispatch = useDispatch();
+  console.log(isModalOpen);
   const getMatchingStudents = debounce(async (inputValue) => {
     const {
       data: { students },
@@ -28,10 +33,6 @@ export const SearchBar = () => {
     items: matchingStudents,
     onInputValueChange: getMatchingStudents,
   });
-
-  const displaySelectedStudent = () => {
-    // if (selectedItem)
-  };
 
   return (
     <SearchBarWrapper>
@@ -53,7 +54,7 @@ export const SearchBar = () => {
                 isHighlighted={highlightedIndex === index}
                 selectedItem={selectedItem === item}
                 onClick={() => {
-                  displaySelectedStudent();
+                  dispatch(openModal());
                 }}
               >
                 {item.name}
