@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useParams, Link } from 'react-router-dom';
 import { Wrapper, TitleWrapper, GroupWrapper } from './Dashboard.styles';
 import StudentsList from 'components/organisms/StudentsList/StudentsList';
 import Title from 'components/atoms/Title/Title';
-import Modal from 'components/organisms/Modal/Modal';
-import { useDispatch, useSelector } from 'react-redux';
-import { useGetGroupsQuery, useGetStudentsByIdMutation } from 'store';
-import { openModal } from 'store';
+import { useDispatch } from 'react-redux';
+import { useGetGroupsQuery, useGetStudentsByIdMutation, openModal, setStudentData } from 'store';
 
 const Dashboard = () => {
   const { id } = useParams();
-  const [currentStudent, setCurrentStudent] = useState([]);
 
   const { data, isLoading } = useGetGroupsQuery();
   const [getStudentsById] = useGetStudentsByIdMutation();
-  const { isModalOpen } = useSelector((store) => store.modal);
   const dispatch = useDispatch();
 
   const handleOpenStudentDetails = async (studentId) => {
     const {
       data: { student },
     } = await getStudentsById(studentId);
-    setCurrentStudent(student);
+    dispatch(setStudentData(student));
     dispatch(openModal());
   };
 
@@ -54,7 +50,6 @@ const Dashboard = () => {
       </TitleWrapper>
       <GroupWrapper>
         <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
-        {}
       </GroupWrapper>
     </Wrapper>
   );

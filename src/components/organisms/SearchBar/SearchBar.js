@@ -4,8 +4,9 @@ import { useCombobox } from 'downshift';
 import debounce from 'lodash.debounce';
 import { Input } from 'components/atoms/Input/Input';
 import { useFindStudentsMutation } from 'store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { openModal } from 'store';
+import { setStudentData } from 'store';
 
 /* 
 TODO
@@ -19,9 +20,8 @@ other stuff.. we will see
 export const SearchBar = () => {
   const [matchingStudents, setMatchingStudents] = useState([]);
   const [findStudents] = useFindStudentsMutation();
-  const { isModalOpen } = useSelector((store) => store.modal);
   const dispatch = useDispatch();
-  console.log(isModalOpen);
+
   const getMatchingStudents = debounce(async (inputValue) => {
     const {
       data: { students },
@@ -54,6 +54,7 @@ export const SearchBar = () => {
                 isHighlighted={highlightedIndex === index}
                 selectedItem={selectedItem === item}
                 onClick={() => {
+                  dispatch(setStudentData(item));
                   dispatch(openModal());
                 }}
               >

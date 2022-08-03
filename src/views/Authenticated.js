@@ -7,11 +7,11 @@ import Notes from './Notes';
 
 const AuthenticatedApp = () => {
   return (
-    <MainTemplate onClick={() => console.log('click')}>
+    <MainTemplate>
       <Wrapper>
         <Routes>
           <Route exact path="/" element={<Navigate replace to="group" />} />
-          <Route path="/group" element={<Dashboard currentStudent />}>
+          <Route path="/group" element={<Dashboard />}>
             <Route path=":id" element={<Dashboard />} />
           </Route>
           <Route path="/notes" element={<Notes />} />
