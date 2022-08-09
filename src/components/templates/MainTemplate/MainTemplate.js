@@ -5,16 +5,13 @@ import { SearchBar } from 'components/organisms/SearchBar/SearchBar';
 import NewsSection from '../NewsSection/NewsSection';
 import NotesWidget from 'components/organisms/NotesWidget/NotesWidget';
 import Modal from 'components/organisms/Modal/Modal';
-import { useSelector } from 'react-redux';
 
 const MainTemplate = ({ children }) => {
-  const { isModalOpen } = useSelector((store) => store.modal);
-
   return (
     <Wrapper>
       <Navigation />
-      <Modal isOpen={isModalOpen} />
-      <SearchBar stude />
+      <Modal />
+      <SearchBar />
       {children}
       <NewsSection />
       <NotesWidget />

@@ -5,19 +5,11 @@ import StudentDetails from 'components/molecules/StudentDetails/StudentDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from 'store';
 
-const Modal = ({ isOpen, children }) => {
+const Modal = ({ children }) => {
   const dispatch = useDispatch();
   const handleClose = () => dispatch(closeModal());
-  const student = useSelector((state) => state.student);
-
-  // return createPortal(
-  //   <ModalWrapper appElement={document.getElementById('root')} isOpen={isOpen} onRequestClose={handleClose}>
-  //     <StudentDetails student={student} />
-  //     {children}
-  //     <Button onClick={handleClose}>Save</Button>
-  //   </ModalWrapper>,
-  //   document.getElementById('modal-container')
-  // );
+  const student = useSelector(({ student }) => student);
+  const { isOpen } = useSelector((store) => store.modal);
 
   return (
     <ModalWrapper appElement={document.getElementById('root')} onRequestClose={handleClose} isOpen={isOpen}>

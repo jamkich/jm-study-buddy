@@ -9,7 +9,6 @@ import { useGetGroupsQuery, useGetStudentsByIdMutation, openModal, setStudentDat
 
 const Dashboard = () => {
   const { id } = useParams();
-
   const { data, isLoading } = useGetGroupsQuery();
   const [getStudentsById] = useGetStudentsByIdMutation();
   const dispatch = useDispatch();
