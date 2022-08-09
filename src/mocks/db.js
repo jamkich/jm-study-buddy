@@ -47,12 +47,6 @@ export const db = factory({
     login: () => 'teacher@studybuddy.com',
     password: () => 'Test123!',
   },
-  user: {
-    id: primaryKey(() => '1'),
-    name: () => 'Jakub Michalik',
-    login: () => 'jakub@studybuddy.com',
-    password: () => 'Test123!',
-  },
 
   note: {
     id: primaryKey(faker.datatype.uuid),

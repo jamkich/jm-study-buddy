@@ -4,6 +4,7 @@ import { FormWrapper, NotesWrapper, StyledFormField, Wrapper } from 'views/Notes
 import Note from 'components/molecules/Note/Note';
 import { useForm } from 'react-hook-form';
 import { useGetNotesQuery, useAddNoteMutation } from 'store';
+import StudentsList from 'components/organisms/StudentsList/StudentsList';
 
 const Notes = () => {
   const {
@@ -40,6 +41,7 @@ const Notes = () => {
           <p>Create your first Note</p>
         )}
       </NotesWrapper>
+      <StudentsList />
     </Wrapper>
   );
 };

@@ -4,6 +4,7 @@ import { handlers } from 'mocks/handlers';
 import { db } from 'mocks/db';
 
 const server = setupServer(...handlers);
+
 beforeAll(() => {
   db.group.create({
     id: 'A',
@@ -17,7 +18,7 @@ beforeAll(() => {
 
   db.teacher.create();
 
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 10; i++) {
     db.student.create();
     db.event.create();
   }

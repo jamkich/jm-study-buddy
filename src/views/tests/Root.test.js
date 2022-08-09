@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen, fireEvent } from 'test-utils';
-import Root from './Root';
+import Root from '../Root';
 
 describe('Root component', () => {
-  it('Renders the root component as unauthenticated  user', () => {
+  it('Renders the root component as unauthenticated user', () => {
     render(<Root />);
     screen.getByLabelText('login');
   });
@@ -33,6 +33,6 @@ describe('Root component', () => {
 
     fireEvent.click(screen.getByText('Sign in'));
 
-    await screen.findByText(/Faye/);
+    await screen.findByText(/faye/i);
   });
 });
