@@ -2,10 +2,8 @@ import '@testing-library/jest-dom';
 import { setupServer } from 'msw/node';
 import { handlers } from 'mocks/handlers';
 import { db } from 'mocks/db';
-import { faker } from '@faker-js/faker';
 
 const server = setupServer(...handlers);
-faker.mersenne.seed(13);
 
 beforeAll(() => {
   db.group.create({
@@ -20,7 +18,7 @@ beforeAll(() => {
 
   db.teacher.create();
 
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 10; i++) {
     db.student.create();
     db.event.create();
   }
