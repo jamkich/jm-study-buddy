@@ -5,6 +5,7 @@ export const studentsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '/',
   }),
+  tagTypes: ['Students'],
   endpoints: (builder) => ({
     getStudentsById: builder.mutation({
       query: (id) => ({
@@ -20,7 +21,15 @@ export const studentsApi = createApi({
         body,
       }),
     }),
+    removeStudent: builder.mutation({
+      query: (body) => ({
+        url: 'students',
+        method: 'DELETE',
+        body,
+      }),
+      invalidatesTags: ['Students'],
+    }),
   }),
 });
 
-export const { useGetStudentsByIdMutation, useFindStudentsMutation } = studentsApi;
+export const { useGetStudentsByIdMutation, useFindStudentsMutation, useRemoveStudentMutation } = studentsApi;
