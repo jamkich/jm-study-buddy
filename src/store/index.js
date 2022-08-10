@@ -20,5 +20,6 @@ export const store = configureStore({
     modal: modalReducer,
     student: studentReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(notesApi.middleware).concat(studentsApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(notesApi.middleware).concat(groupsApi.middleware).concat(studentsApi.middleware),
 });

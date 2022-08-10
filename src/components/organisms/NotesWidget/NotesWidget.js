@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NotesWrapper, WidgetHandler, Wrapper } from './NotesWidget.styles';
 import Note from 'components/molecules/Note/Note';
 import { useGetNotesQuery } from 'store';
 
 const NotesWidget = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { data, isLoading } = useGetNotesQuery();
 
   const handleToggleWidget = () => setIsOpen((prevState) => !prevState);

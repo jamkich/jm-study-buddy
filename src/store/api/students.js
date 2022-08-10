@@ -27,7 +27,6 @@ export const studentsApi = createApi({
         method: 'DELETE',
         body,
       }),
-      invalidatesTags: ['Students'],
     }),
   }),
 });
