@@ -12,9 +12,9 @@ const StudentListItem = ({ id, studentData: { average, name, attendance = '0%' }
   const [removeStudent] = useRemoveStudentMutation();
   const dispatch = useDispatch();
 
-  const handleRemoveStudent = (e) => {
+  const handleRemoveStudent = async (e) => {
     e.stopPropagation();
-    removeStudent({ id: id });
+    await removeStudent({ id: id });
     dispatch(groupsApi.util.invalidateTags(['Students']));
   };
 
