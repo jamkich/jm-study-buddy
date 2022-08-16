@@ -16,4 +16,4 @@ Password: Test123!
 - adding/removing users X/✅
 - add responsiveness
   other stuff.. we will see
-- add notification system
+- add notification system, new view (maybe something with map)
