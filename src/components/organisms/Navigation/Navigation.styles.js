@@ -30,8 +30,7 @@ export const Logo = styled.div`
   }
 `;
 
-const activeclassname = 'active-link';
-export const StyledLink = styled(NavLink).attrs({ activeclassname })`
+export const StyledLink = styled(NavLink)`
   font-weight: bold;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.darkGrey};
@@ -39,12 +38,6 @@ export const StyledLink = styled(NavLink).attrs({ activeclassname })`
   margin: 15px 20px 15px auto;
   position: relative;
   cursor: pointer;
-
-  &.${activeclassname} {
-    &::after {
-      opacity: 1;
-    }
-  }
 
   &::after {
     opacity: 0;
@@ -57,5 +50,9 @@ export const StyledLink = styled(NavLink).attrs({ activeclassname })`
     transform: translateY(-50%);
     right: -20px;
     background-color: ${({ theme }) => theme.colors.darkPurple};
+  }
+
+  &.active::after {
+    opacity: 1;
   }
 `;
