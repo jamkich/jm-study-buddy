@@ -1,6 +1,7 @@
 import { useAuth } from 'hooks/useAuth';
 import React from 'react';
 import { Wrapper, Logo, StyledLink } from './Navigation.styles';
+
 const Navigation = () => {
   const auth = useAuth();
 

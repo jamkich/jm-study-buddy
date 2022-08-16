@@ -8,16 +8,6 @@ import { useDispatch } from 'react-redux';
 import { openModal } from 'store';
 import { setStudentData } from 'store';
 
-/* 
-TODO
-- use rtk to make search bar working ✅ 
-- make modal working with searchBar ✅
-- looking for bugs/things to refactor 😝  HALF ✅
-- make some tests TODO
-- adding/removing users
-other stuff.. we will see
-
-*/
 export const SearchBar = () => {
   const [matchingStudents, setMatchingStudents] = useState([]);
   const [findStudents] = useFindStudentsMutation();
