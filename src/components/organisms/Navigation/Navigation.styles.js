@@ -41,7 +41,7 @@ export const StyledLink = styled(NavLink)`
 
   &::after {
     opacity: 0;
-    transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
     content: '';
     position: absolute;
     width: 18px;

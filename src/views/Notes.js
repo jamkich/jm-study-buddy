@@ -4,6 +4,7 @@ import { FormWrapper, NotesWrapper, StyledFormField, Wrapper } from 'views/Notes
 import Note from 'components/molecules/Note/Note';
 import { useForm } from 'react-hook-form';
 import { useGetNotesQuery, useAddNoteMutation } from 'store';
+import Title from 'components/atoms/Title/Title';
 
 const Notes = () => {
   const {
@@ -23,6 +24,7 @@ const Notes = () => {
   return (
     <Wrapper>
       <FormWrapper onSubmit={handleSubmit(handleAddNote)}>
+        <Title>Add new note</Title>
         {errors.title && <span>Title is required</span>}
         <StyledFormField label="Title" name="Title" id="title" {...register('title', { required: true })} />
         {errors.content && <span>Content is required</span>}
@@ -35,7 +37,7 @@ const Notes = () => {
         ) : data.notes.length ? (
           data.notes.map(({ id, title, content }) => <Note id={id} key={id} title={title} content={content} />)
         ) : (
-          <p>Create your first Note</p>
+          <p>Create your first note...</p>
         )}
       </NotesWrapper>
     </Wrapper>
