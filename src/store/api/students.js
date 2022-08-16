@@ -5,7 +5,6 @@ export const studentsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '/',
   }),
-  tagTypes: ['Students'],
   endpoints: (builder) => ({
     getStudentsById: builder.mutation({
       query: (id) => ({

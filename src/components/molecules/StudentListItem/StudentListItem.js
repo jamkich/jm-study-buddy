@@ -5,13 +5,17 @@ import { StyledInfo, Wrapper } from './StudentListItem.styles';
 import { UserShape } from 'types';
 import Average from 'components/atoms/Average/Average';
 import { useRemoveStudentMutation } from 'store';
+import { groupsApi } from 'store';
+import { useDispatch } from 'react-redux';
 
 const StudentListItem = ({ id, studentData: { average, name, attendance = '0%' }, ...props }) => {
   const [removeStudent] = useRemoveStudentMutation();
+  const dispatch = useDispatch();
 
   const handleRemoveStudent = (e) => {
     e.stopPropagation();
     removeStudent({ id: id });
+    dispatch(groupsApi.util.invalidateTags(['Students']));
   };
 
   return (
