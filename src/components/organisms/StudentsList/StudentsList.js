@@ -20,7 +20,7 @@ const StudentsList = ({ handleOpenStudentDetails }) => {
         <StyledList>
           {!error
             ? data.students.map((userData) => (
-                <StudentListItem onClick={() => handleOpenStudentDetails(userData.id)} key={userData.id} studentData={userData} />
+                <StudentListItem onClick={() => handleOpenStudentDetails(userData.id)} id={userData.id} key={userData.id} studentData={userData} />
               ))
             : dispatchError(error)}
         </StyledList>

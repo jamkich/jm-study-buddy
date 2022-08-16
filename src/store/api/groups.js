@@ -5,14 +5,16 @@ export const groupsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '/',
   }),
+  tagTypes: ['Students'],
   endpoints: (builder) => ({
     getGroups: builder.query({
       query: () => 'groups',
     }),
     getStudentsByGroup: builder.query({
       query: (body) => `groups/${body.id}`,
+      providesTags: ['Students'],
     }),
   }),
 });
 
-export const { useGetGroupsQuery, useGetStudentsByGroupQuery } = groupsApi;
+export const { useGetGroupsQuery, useGetStudentsByGroupQuery, tagTypes } = groupsApi;

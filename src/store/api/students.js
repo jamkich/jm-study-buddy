@@ -20,7 +20,14 @@ export const studentsApi = createApi({
         body,
       }),
     }),
+    removeStudent: builder.mutation({
+      query: (body) => ({
+        url: 'students',
+        method: 'DELETE',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetStudentsByIdMutation, useFindStudentsMutation } = studentsApi;
+export const { useGetStudentsByIdMutation, useFindStudentsMutation, useRemoveStudentMutation } = studentsApi;

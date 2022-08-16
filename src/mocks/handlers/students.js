@@ -49,4 +49,17 @@ export const students = [
       })
     );
   }),
+  rest.delete('/students', (req, res, ctx) => {
+    if (req.body.id) {
+      const removedStudent = db.student.delete({
+        where: {
+          id: {
+            equals: req.body.id,
+          },
+        },
+      });
+      return res(ctx.status(200), ctx.json({ removedStudent }));
+    }
+    return res(ctx.status(400), ctx.json({ error: 'Provide ID of removed student' }));
+  }),
 ];
