@@ -2,7 +2,7 @@ import Modal from './Modal';
 import StudentDetails from 'components/molecules/StudentDetails/StudentDetails';
 
 export default {
-  title: 'Components/Molecules/Modal',
+  title: 'Components/Modal',
   component: Modal,
 };
 
