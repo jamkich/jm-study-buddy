@@ -10,11 +10,11 @@ const MainTemplate = ({ children }) => {
   return (
     <Wrapper>
       <Navigation />
-      <Modal />
       <SearchBar />
       {children}
       <NewsSection />
       <NotesWidget />
+      <Modal />
     </Wrapper>
   );
 };

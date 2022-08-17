@@ -69,6 +69,7 @@ export const StyledLink = styled(NavLink)`
     p {
       margin-right: 20px;
       color: ${({ theme }) => theme.colors.white};
+      margin-top: 15px;
     }
   }
 `;

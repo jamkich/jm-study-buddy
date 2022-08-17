@@ -13,7 +13,8 @@ Password: Test123!
 - make modal working with searchBar ✅
 - looking for bugs/things to refactor 👨🏻‍💻
 - make some tests 👨🏻‍💻
-- adding/removing users X/✅
+- adding/removing users ❌/✅
 - add responsiveness
   other stuff.. we will see
-- add notification system, new view (maybe something with map)
+- add notification system (1st in line)
+- new view (maybe something with map)
