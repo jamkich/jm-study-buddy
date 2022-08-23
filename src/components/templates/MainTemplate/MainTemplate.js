@@ -10,13 +10,13 @@ import Notification from 'components/organisms/Notification/Notification';
 const MainTemplate = ({ children }) => {
   return (
     <Wrapper>
+      <Notification />
       <Navigation />
       <SearchBar />
       {children}
       <NewsSection />
       <NotesWidget />
       <Modal />
-      <Notification type="success" message="User has been succesfully deleted." />
     </Wrapper>
   );
 };
