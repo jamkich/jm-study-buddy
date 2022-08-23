@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
 import { Label } from 'components/atoms/Label/Label';
 import Title from 'components/atoms/Title/Title';
@@ -18,6 +18,15 @@ const handleColorType = (theme, type) => {
   }
 };
 
+const slideAnimation = keyframes`
+  from {
+    transform: translateY(-200%);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
+
 export const Wrapper = styled.div`
   width: 200px;
   height: 100px;
@@ -32,6 +41,10 @@ export const Wrapper = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xm};
   position: relative;
   padding: 15px;
+  position: absolute;
+  top: 30px;
+  left: 82%;
+  animation: ${slideAnimation} 0.5s ease-in-out 1 forwards, ${slideAnimation} 0.5s 8s ease-in-out 1 reverse forwards;
 `;
 
 export const StyledTitle = styled(Title)`
