@@ -2,7 +2,21 @@ import styled from 'styled-components';
 import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
 import { Label } from 'components/atoms/Label/Label';
 import Title from 'components/atoms/Title/Title';
-import { types } from './Notification';
+
+const handleColorType = (theme, type) => {
+  switch (type) {
+    case 'error':
+      return theme.colors.error;
+    case 'success':
+      return theme.colors.success;
+    case 'info':
+      return theme.colors.info;
+    case 'warning':
+      return theme.colors.warning;
+    default:
+      return 'black';
+  }
+};
 
 export const Wrapper = styled.div`
   width: 200px;
@@ -11,12 +25,7 @@ export const Wrapper = styled.div`
   border-radius: 2px;
   border: 1px solid;
   border-top: 10px solid;
-  border-color: ${({ theme, type }) => {
-    if (type === types.success.type) return theme.colors.success;
-    if (type === types.error.type) return theme.colors.error;
-    if (type === types.info.type) return theme.colors.info;
-    if (type === types.warning.type) return theme.colors.warning;
-  }};
+  border-color: ${({ theme, type }) => handleColorType(theme, type)};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,12 +36,7 @@ export const Wrapper = styled.div`
 
 export const StyledTitle = styled(Title)`
   font-size: ${({ theme }) => theme.fontSize.l};
-  color: ${({ theme, type }) => {
-    if (type === types.success.type) return theme.colors.success;
-    if (type === types.error.type) return theme.colors.error;
-    if (type === types.info.type) return theme.colors.info;
-    if (type === types.warning.type) return theme.colors.warning;
-  }};
+  color: ${({ theme, type }) => handleColorType(theme, type)};
   margin-top: -5px;
 `;
 
@@ -48,13 +52,9 @@ export const CloseButton = styled(DeleteButton)`
   position: absolute;
   top: 5px;
   left: 80%;
-  background-color: ${({ theme, type }) => {
-    if (type === 'success') return theme.colors.success;
-    if (type === types.error.type) return theme.colors.error;
-    if (type === types.info.type) return theme.colors.info;
-    if (type === types.warning.type) return theme.colors.warning;
-  }};
+  background-color: ${({ theme, type }) => handleColorType(theme, type)};
   width: 25px;
   height: 25px;
-  /* border-radius: 7px; */
+  border-radius: 7px;
+  /* border-radius: 2px; */
 `;

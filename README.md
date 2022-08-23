@@ -18,4 +18,4 @@ Password: Test123!
   other stuff.. we will see
 - add notification system (1st in line)
 - new view (maybe something with map)
-- refactor modal for reusabling
+- refactor modal for reuse

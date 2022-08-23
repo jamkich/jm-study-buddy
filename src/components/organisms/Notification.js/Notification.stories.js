@@ -20,19 +20,19 @@ export const SuccessNotification = Template.bind({});
 SuccessNotification.args = {
   title: 'Success! 😎',
   type: 'success',
-  message: 'Something went wrong..... Try again. ',
+  message: 'User has been succesfully deleted. ',
 };
 
 export const InfoNotification = Template.bind({});
 InfoNotification.args = {
   title: 'Info! ',
   type: 'info',
-  message: 'Something went wrong..... Try again. ',
+  message: 'Note has been added. ',
 };
 
 export const WarningNotification = Template.bind({});
 WarningNotification.args = {
   title: 'Warning...',
   type: 'warning',
-  message: 'Something went wrong..... Try again. ',
+  message: 'Fill all required fields. ',
 };

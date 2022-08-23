@@ -1,24 +1,6 @@
 import React from 'react';
 import { Wrapper, StyledTitle, StyledLabel, CloseButton } from './Notification.styles';
-
-export const types = {
-  success: {
-    type: 'success',
-    title: 'Success! 😎',
-  },
-  error: {
-    type: 'error',
-    title: 'Oops! ☹️',
-  },
-  info: {
-    type: 'info',
-    title: 'Info, ',
-  },
-  warning: {
-    type: 'warning',
-    title: 'Warning...',
-  },
-};
+import PropTypes from 'prop-types';
 
 const Notification = ({ type, message, title }) => {
   return (
@@ -30,4 +12,9 @@ const Notification = ({ type, message, title }) => {
   );
 };
 
+Notification.propTypes = {
+  type: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
 export default Notification;
