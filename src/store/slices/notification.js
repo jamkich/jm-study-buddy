@@ -13,7 +13,6 @@ const notificationSlice = createSlice({
         type: action.payload.type,
         message: action.payload.message,
       });
-      console.log(state.notifications);
     },
   },
 });
