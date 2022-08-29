@@ -5,17 +5,20 @@ import { useSelector } from 'react-redux';
 
 const Notification = () => {
   const { notifications } = useSelector((state) => state.notification);
-  // const [notification, setNotification] = useState([]);
+  const [notification, setNotification] = useState([]);
   const [isShow, setIsShow] = useState(false);
 
   const handleClose = useCallback(() => {
+    // TODO
+    // write reducer which delete noti from store
+
     setIsShow(false);
     console.log(isShow);
   }, [isShow]);
 
   useEffect(() => {
-    if (notifications.length) {
-      // setNotification(notifications[notifications.length - 1]);
+    if (notifications) {
+      setNotification(notifications[notifications.length - 1]);
       setIsShow(true);
       setTimeout(() => {
         handleClose();
@@ -23,7 +26,7 @@ const Notification = () => {
       console.log(notifications);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [notification]);
 
   const handleTitleType = (type) => {
     switch (type) {
@@ -43,7 +46,6 @@ const Notification = () => {
 
   return notifications.map(({ id, type, message }) => {
     const title = handleTitleType(type);
-
     return (
       <Wrapper type={type} isShow={isShow} key={id}>
         <StyledTitle type={type}>{title}</StyledTitle>

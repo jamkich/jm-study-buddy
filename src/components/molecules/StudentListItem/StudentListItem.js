@@ -8,6 +8,7 @@ import { useRemoveStudentMutation } from 'store';
 import { groupsApi } from 'store';
 import { useDispatch } from 'react-redux';
 import { createNotification } from 'store';
+
 const StudentListItem = ({ id, studentData: { average, name, attendance = '0%' }, ...props }) => {
   const [removeStudent] = useRemoveStudentMutation();
   const dispatch = useDispatch();
