@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialNotiState = {
@@ -10,6 +11,7 @@ const notificationSlice = createSlice({
   reducers: {
     createNotification: (state, action) => {
       state.notifications.push({
+        id: faker.datatype.uuid(),
         type: action.payload.type,
         message: action.payload.message,
       });

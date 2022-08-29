@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
   top: 30px;
   left: 82%;
   animation: ${slideAnimation} 0.5s ease-in-out 1 forwards, ${slideAnimation} 0.5s 8s ease-in-out 1 reverse forwards;
-  opacity: ${({ isShow }) => (isShow ? '1' : '0')};
+  opacity: ${({ isShow }) => (isShow ? 1 : 0)};
 `;
 
 export const StyledTitle = styled(Title)`

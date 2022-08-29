@@ -1,26 +1,29 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Wrapper, StyledTitle, StyledLabel, CloseButton } from './Notification.styles';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 const Notification = () => {
   const { notifications } = useSelector((state) => state.notification);
-  const [{ type, message }, setNotification] = useState({ type: '', message: '' });
+  // const [notification, setNotification] = useState([]);
   const [isShow, setIsShow] = useState(false);
 
-  useCallback(() => {
-    const handleClose = () => {
-      setIsShow(false);
-      console.log(isShow);
-    };
+  const handleClose = useCallback(() => {
+    setIsShow(false);
+    console.log(isShow);
+  }, [isShow]);
+
+  useEffect(() => {
     if (notifications.length) {
-      setNotification(notifications[notifications.length - 1]);
+      // setNotification(notifications[notifications.length - 1]);
       setIsShow(true);
       setTimeout(() => {
         handleClose();
       }, 8000);
+      console.log(notifications);
     }
-  }, [notifications]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleTitleType = (type) => {
     switch (type) {
@@ -36,17 +39,19 @@ const Notification = () => {
         return 'black';
     }
   };
-
-  const title = handleTitleType(type);
   // appElement={document.getElementById('root')}
 
-  return isShow ? (
-    <Wrapper type={type} isShow={isShow}>
-      <StyledTitle type={type}>{title}</StyledTitle>
-      <StyledLabel>{message}</StyledLabel>
-      <CloseButton onclick={() => handleClose()} type={type} />
-    </Wrapper>
-  ) : null;
+  return notifications.map(({ id, type, message }) => {
+    const title = handleTitleType(type);
+
+    return (
+      <Wrapper type={type} isShow={isShow} key={id}>
+        <StyledTitle type={type}>{title}</StyledTitle>
+        <StyledLabel>{message}</StyledLabel>
+        <CloseButton onClick={handleClose} type={type} />
+      </Wrapper>
+    );
+  });
 };
 
 Notification.propTypes = {
