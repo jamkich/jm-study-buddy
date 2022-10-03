@@ -4,9 +4,11 @@ import { NoteWrapper, StyledDeleteButton } from './Note.styles';
 import { useRemoveNoteMutation } from 'store';
 import { useDispatch } from 'react-redux';
 import { groupsApi } from 'store';
+
 const Note = ({ title = 'Untitled', content = 'No content', id }) => {
   const [removeNote] = useRemoveNoteMutation();
   const dispatch = useDispatch();
+
   const handleRemoveNote = () => {
     removeNote({ id: id });
     dispatch({

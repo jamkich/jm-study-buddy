@@ -1,32 +1,18 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import { Wrapper, StyledTitle, StyledLabel, CloseButton } from './Notification.styles';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeNotification } from 'store';
 
 const Notification = () => {
   const { notifications } = useSelector((state) => state.notification);
-  const [notification, setNotification] = useState([]);
-  const [isShow, setIsShow] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleClose = useCallback(() => {
+  const handleClose = () => {
     // TODO
     // write reducer which delete noti from store
-
-    setIsShow(false);
-    console.log(isShow);
-  }, [isShow]);
-
-  useEffect(() => {
-    if (notifications) {
-      setNotification(notifications[notifications.length - 1]);
-      setIsShow(true);
-      setTimeout(() => {
-        handleClose();
-      }, 8000);
-      console.log(notifications);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [notification]);
+    dispatch(removeNotification(notifications[notifications.length - 1]));
+  };
 
   const handleTitleType = (type) => {
     switch (type) {
@@ -42,18 +28,19 @@ const Notification = () => {
         return 'black';
     }
   };
-  // appElement={document.getElementById('root')}
 
-  return notifications.map(({ id, type, message }) => {
-    const title = handleTitleType(type);
-    return (
-      <Wrapper type={type} isShow={isShow} key={id}>
-        <StyledTitle type={type}>{title}</StyledTitle>
-        <StyledLabel>{message}</StyledLabel>
-        <CloseButton onClick={handleClose} type={type} />
-      </Wrapper>
-    );
-  });
+  if (notifications) {
+    return notifications.map(({ id, type, message }) => {
+      const title = handleTitleType(type);
+      return (
+        <Wrapper type={type} key={id}>
+          <StyledTitle type={type}>{title}</StyledTitle>
+          <StyledLabel>{message}</StyledLabel>
+          <CloseButton onClick={handleClose} type={type} />
+        </Wrapper>
+      );
+    });
+  } else return null;
 };
 
 Notification.propTypes = {
