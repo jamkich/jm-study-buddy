@@ -16,7 +16,6 @@ const ErrorMessage = ({ message = defaultErrorMessage }) => {
 
 ErrorMessage.propTypes = {
   message: PropTypes.string,
-  color: PropTypes.string,
 };
 
 export default ErrorMessage;

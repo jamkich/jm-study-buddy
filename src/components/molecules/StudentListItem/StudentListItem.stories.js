@@ -18,6 +18,7 @@ BadGrades.args = {
 
 export const MediumGrades = Template.bind({});
 MediumGrades.args = {
+  id: '32131',
   studentData: {
     name: 'Jakub Michalik',
     attendance: '35%',

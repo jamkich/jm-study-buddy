@@ -8,7 +8,7 @@ const studentSlice = createSlice({
   name: 'student',
   initialState: initialStudentState,
   reducers: {
-    setStudentData: (state, action) => {
+    setStudentData: (_, action) => {
       return { ...action.payload };
     },
   },

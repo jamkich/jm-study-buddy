@@ -7,6 +7,7 @@ import Average from 'components/atoms/Average/Average';
 import { useRemoveStudentMutation } from 'store';
 import { groupsApi } from 'store';
 import { useDispatch } from 'react-redux';
+import { createNotification } from 'store';
 
 const StudentListItem = ({ id, studentData: { average, name, attendance = '0%' }, ...props }) => {
   const [removeStudent] = useRemoveStudentMutation();
@@ -15,6 +16,7 @@ const StudentListItem = ({ id, studentData: { average, name, attendance = '0%' }
   const handleRemoveStudent = async (e) => {
     e.stopPropagation();
     await removeStudent({ id: id });
+    dispatch(createNotification({ type: 'success', message: 'User has been succesfully deleted.' }));
     dispatch(groupsApi.util.invalidateTags(['Students']));
   };
 

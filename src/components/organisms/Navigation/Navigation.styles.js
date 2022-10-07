@@ -38,10 +38,12 @@ export const StyledLink = styled(NavLink)`
   margin: 15px 20px 15px auto;
   position: relative;
   cursor: pointer;
+  display: flex;
+  flex-flow: column nowrap;
 
   &::after {
     opacity: 0;
-    transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
     content: '';
     position: absolute;
     width: 18px;
@@ -54,5 +56,20 @@ export const StyledLink = styled(NavLink)`
 
   &.active::after {
     opacity: 1;
+  }
+
+  &:last-child {
+    text-align: right;
+    display: flex;
+    width: 100%;
+    height: 60px;
+    margin-top: auto;
+    background-color: ${({ theme }) => theme.colors.error};
+
+    p {
+      margin-right: 20px;
+      color: ${({ theme }) => theme.colors.white};
+      margin-top: 15px;
+    }
   }
 `;

@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 
 export const FormWrapper = styled.form`
   padding: 40px;
+  padding-top: 10px;
   background: ${({ theme }) => theme.colors.white};
   border-radius: 25px;
   width: 100%;

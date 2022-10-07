@@ -24,7 +24,7 @@ export const StyledInfo = styled.div`
     color: ${({ theme }) => theme.colors.darkGrey};
   }
 
-  p:first-child {
+  p:first-of-type {
     display: flex;
     align-items: center;
     font-weight: bold;
