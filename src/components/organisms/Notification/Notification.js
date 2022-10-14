@@ -1,7 +1,6 @@
 import React from 'react';
 import { Wrapper, StyledTitle, StyledLabel, CloseButton } from './Notification.styles';
-import { useNotification } from './useNotification';
-
+import { useNotification } from 'hooks/useNotification';
 import PropTypes from 'prop-types';
 
 const Notification = () => {
