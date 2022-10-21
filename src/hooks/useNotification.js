@@ -7,8 +7,8 @@ export const useNotification = () => {
 
   const handleClose = () => {
     // TODO
-    // write reducer which delete noti from store
     dispatch(removeNotification(notifications[notifications.length - 1]));
+    console.log(notifications);
   };
 
   const handleTitleType = (type) => {
