@@ -9,7 +9,7 @@ import { createNotification } from 'store';
 
 const AuthenticatedApp = () => {
   const dispatch = useDispatch();
-  // dispatch(createNotification({ type: 'info', message: 'You have been logged in' }));
+  dispatch(createNotification({ type: 'info', message: 'You have been logged in' }));
 
   return (
     <MainTemplate>
