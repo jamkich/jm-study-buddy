@@ -5,13 +5,13 @@ import Title from 'components/atoms/Title/Title';
 
 const handleColorType = (theme, type) => {
   switch (type) {
-    case 'error':
+    case 'ERROR':
       return theme.colors.error;
-    case 'success':
+    case 'SUCCESS':
       return theme.colors.success;
-    case 'info':
+    case 'INFO':
       return theme.colors.info;
-    case 'warning':
+    case 'WARNING':
       return theme.colors.warning;
     default:
       return 'black';

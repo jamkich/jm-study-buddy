@@ -1,13 +1,13 @@
 import { faker } from '@faker-js/faker';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialNotiState = {
+const initialNotificationState = {
   notifications: [],
 };
 
 const notificationSlice = createSlice({
   name: 'notification',
-  initialState: initialNotiState,
+  initialState: initialNotificationState,
   reducers: {
     createNotification: (state, action) => {
       state.notifications.push({
