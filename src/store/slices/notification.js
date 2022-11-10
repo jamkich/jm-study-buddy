@@ -18,7 +18,6 @@ const notificationSlice = createSlice({
     },
     removeNotification: (state, action) => {
       console.log(state, action.payload);
-      // return state.notifications.filter((notification) => notification.id !== action.payload.id);
       state.notifications.pop();
     },
   },

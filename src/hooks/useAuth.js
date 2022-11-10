@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useError } from './useError';
+import { useDispatch } from 'react-redux';
+import { createNotification } from 'store';
 
 const AuthContext = React.createContext({});
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
-  const { dispatchError } = useError();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data);
       localStorage.setItem('token', response.data.token);
     } catch (e) {
-      dispatchError('Invalid email or password.');
+      dispatch(createNotification({ type: 'ERROR', message: 'Invalid email or password.' }));
     }
   };
 
