@@ -9,13 +9,18 @@ Password: Test123!
 
 # TODO
 
-- use rtk to make search bar working ✅
-- make modal working with searchBar ✅
 - looking for bugs/things to refactor 👨🏻‍💻
 - make some tests 👨🏻‍💻
 - adding/removing users ❌/✅
 - add responsiveness
   other stuff.. we will see
-- add notification system (1st in line)
 - new view (maybe something with map)
 - refactor modal for reuse
+- add some cool ux-stuff to notifications
+- refactor stories with redux
+
+# ALREADY DONE
+
+- add notification system ✅ (check it out)
+- make modal working with searchBar ✅
+- use rtk to make search bar working ✅
