@@ -34,10 +34,10 @@ export const AuthProvider = ({ children }) => {
       });
       setUser(response.data);
       localStorage.setItem('token', response.data.token);
+
       dispatch(createNotification({ type: 'INFO', message: 'You have been logged in 😁.' }));
     } catch (e) {
       // TODO
-      // naprawic przeladowywanie state noti kiedy trafia tam error, sprobuj wymusic wyswietlanie
       dispatch(createNotification({ type: 'ERROR', message: 'Invalid email or password.' }));
     }
   };
