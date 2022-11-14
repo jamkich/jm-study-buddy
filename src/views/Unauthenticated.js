@@ -4,7 +4,6 @@ import { Button } from 'components/atoms/Button/Button';
 import { useForm } from 'react-hook-form';
 import { useAuth } from 'hooks/useAuth';
 import { FormWrapper } from './Unauthenticated.styles';
-import Notification from 'components/molecules/Notification/Notification';
 
 const UnauthenticatedApp = () => {
   const {

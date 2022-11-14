@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { createNotification } from 'store';
+import { createNotification, removeAllNotifications } from 'store';
 
 const AuthContext = React.createContext({});
 export const AuthProvider = ({ children }) => {
@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signOut = () => {
+    dispatch(removeAllNotifications());
     setUser(null);
     localStorage.removeItem('token');
   };

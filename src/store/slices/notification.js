@@ -16,12 +16,16 @@ const notificationSlice = createSlice({
         message: action.payload.message,
       });
     },
-    removeNotification: (state, action) => {
-      console.log(state, action.payload);
+    removeNotification: (state) => {
       state.notifications.pop();
+    },
+
+    removeAllNotifications: (state) => {
+      // state.notifications.splice(0, state.length);
+      state.notifications = [];
     },
   },
 });
 
-export const { createNotification, removeNotification } = notificationSlice.actions;
+export const { createNotification, removeNotification, removeAllNotifications } = notificationSlice.actions;
 export default notificationSlice.reducer;
