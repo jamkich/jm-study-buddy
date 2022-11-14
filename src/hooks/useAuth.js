@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }) => {
 
       dispatch(createNotification({ type: 'INFO', message: 'You have been logged in 😁.' }));
     } catch (e) {
-      // TODO
       dispatch(createNotification({ type: 'ERROR', message: 'Invalid email or password.' }));
     }
   };
