@@ -12,7 +12,7 @@ const Note = ({ title = 'Untitled', content = 'No content', id }) => {
 
   const handleRemoveNote = () => {
     removeNote({ id: id });
-    dispatch(createNotification({ type: 'success', message: 'Note has been succesfully deleted.' }));
+    dispatch(createNotification({ type: 'SUCCESS', message: 'Note has been succesfully deleted.' }));
     dispatch({
       type: `${groupsApi}/invalidateTags`,
       payload: ['Students'],

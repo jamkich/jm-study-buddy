@@ -1,13 +1,13 @@
 import { faker } from '@faker-js/faker';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialNotiState = {
+const initialNotificationState = {
   notifications: [],
 };
 
 const notificationSlice = createSlice({
   name: 'notification',
-  initialState: initialNotiState,
+  initialState: initialNotificationState,
   reducers: {
     createNotification: (state, action) => {
       state.notifications.push({
@@ -16,13 +16,16 @@ const notificationSlice = createSlice({
         message: action.payload.message,
       });
     },
-    removeNotification: (state, action) => {
-      console.log(state, action.payload);
-      // return state.notifications.filter((notification) => notification.id !== action.payload.id);
+    removeNotification: (state) => {
       state.notifications.pop();
+    },
+
+    removeAllNotifications: (state) => {
+      // state.notifications.splice(0, state.length);
+      state.notifications = [];
     },
   },
 });
 
-export const { createNotification, removeNotification } = notificationSlice.actions;
+export const { createNotification, removeNotification, removeAllNotifications } = notificationSlice.actions;
 export default notificationSlice.reducer;

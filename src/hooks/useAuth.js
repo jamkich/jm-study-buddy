@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useError } from './useError';
+import { useDispatch } from 'react-redux';
+import { createNotification, removeAllNotifications } from 'store';
 
 const AuthContext = React.createContext({});
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
-  const { dispatchError } = useError();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -33,12 +34,16 @@ export const AuthProvider = ({ children }) => {
       });
       setUser(response.data);
       localStorage.setItem('token', response.data.token);
+
+      dispatch(createNotification({ type: 'INFO', message: 'You have been logged in 😁.' }));
     } catch (e) {
-      dispatchError('Invalid email or password.');
+      // TODO
+      dispatch(createNotification({ type: 'ERROR', message: 'Invalid email or password.' }));
     }
   };
 
   const signOut = () => {
+    dispatch(removeAllNotifications());
     setUser(null);
     localStorage.removeItem('token');
   };

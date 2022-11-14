@@ -6,20 +6,18 @@ export const useNotification = () => {
   const { notifications } = useSelector((state) => state.notification);
 
   const handleClose = () => {
-    // TODO
     dispatch(removeNotification(notifications[notifications.length - 1]));
-    console.log(notifications);
   };
 
   const handleTitleType = (type) => {
     switch (type) {
-      case 'error':
+      case 'ERROR':
         return 'Oops! 😒';
-      case 'success':
+      case 'SUCCESS':
         return 'Success! 😎';
-      case 'info':
+      case 'INFO':
         return 'Info!';
-      case 'warning':
+      case 'WARNING':
         return 'Warning...';
       default:
         return 'black';

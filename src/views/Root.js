@@ -1,16 +1,14 @@
 import React from 'react';
 import { useAuth } from 'hooks/useAuth';
-import ErrorMessage from 'components/molecules/ErrorMessage/ErrorMessage';
-import { useError } from 'hooks/useError';
 import AuthenticatedApp from './Authenticated';
 import UnauthenticatedApp from './Unauthenticated';
+import Notification from 'components/molecules/Notification/Notification';
 
 const Root = () => {
   const auth = useAuth();
-  const { error } = useError();
   return (
     <>
-      {error ? <ErrorMessage message={error} /> : null}
+      <Notification />
       {auth.user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </>
   );

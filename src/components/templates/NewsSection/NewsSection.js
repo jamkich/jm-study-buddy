@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ArticleWrapper, NewsSectionHeader, Wrapper, TitleWrapper, ContentWrapper } from './NewsSection.styles';
 import { Button } from 'components/atoms/Button/Button';
 import axios from 'axios';
-import ErrorMessage from 'components/molecules/ErrorMessage/ErrorMessage';
+import { createNotification } from 'store';
+import { useDispatch } from 'react-redux';
 
 export const query = `
         {
@@ -20,6 +21,7 @@ export const query = `
 const NewsSection = () => {
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // console.log(process.env.REACT_APP_DATOCMS_TOKEN);
@@ -43,27 +45,25 @@ const NewsSection = () => {
   return (
     <Wrapper>
       <NewsSectionHeader>University news feed </NewsSectionHeader>
-      {articles.length ? (
-        articles.map(({ id, title, category, content, image = null }) => {
-          return (
-            <ArticleWrapper key={id}>
-              <TitleWrapper>
-                <h3>{title}</h3>
-                <p>{category}</p>
-              </TitleWrapper>
-              <ContentWrapper>
-                <p>{content}</p>
-                {image ? <img src={image.url} alt="article" /> : null}
-              </ContentWrapper>
-              <Button isBig>Read more</Button>
-            </ArticleWrapper>
-          );
-        })
-      ) : !error ? (
-        'Loading...'
-      ) : (
-        <ErrorMessage message={error} />
-      )}
+      {articles.length
+        ? articles.map(({ id, title, category, content, image = null }) => {
+            return (
+              <ArticleWrapper key={id}>
+                <TitleWrapper>
+                  <h3>{title}</h3>
+                  <p>{category}</p>
+                </TitleWrapper>
+                <ContentWrapper>
+                  <p>{content}</p>
+                  {image ? <img src={image.url} alt="article" /> : null}
+                </ContentWrapper>
+                <Button isBig>Read more</Button>
+              </ArticleWrapper>
+            );
+          })
+        : !error
+        ? 'Loading...'
+        : dispatch(createNotification({ type: 'ERROR', message: error }))}
     </Wrapper>
   );
 };
