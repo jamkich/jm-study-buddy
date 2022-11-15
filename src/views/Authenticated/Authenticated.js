@@ -1,9 +1,9 @@
 import React from 'react';
-import { Wrapper } from './Root.styles';
+import { Wrapper } from 'views/Root/Root.styles';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
-import Dashboard from 'views/Dashboard';
-import Notes from './Notes';
+import Dashboard from 'views/Dashboard/Dashboard';
+import Notes from 'views/Notes/Notes';
 
 const AuthenticatedApp = () => {
   return (

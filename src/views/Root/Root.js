@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from 'hooks/useAuth';
-import AuthenticatedApp from './Authenticated';
-import UnauthenticatedApp from './Unauthenticated';
+import AuthenticatedApp from 'views/Authenticated/Authenticated';
+import UnauthenticatedApp from 'views/Unauthenticated/Unauthenticated';
 import Notification from 'components/molecules/Notification/Notification';
 
 const Root = () => {

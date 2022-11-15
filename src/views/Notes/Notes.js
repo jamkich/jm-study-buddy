@@ -1,6 +1,6 @@
 import { Button } from 'components/atoms/Button/Button';
 import React from 'react';
-import { FormWrapper, NotesWrapper, StyledFormField, Wrapper } from 'views/Notes.styles';
+import { FormWrapper, NotesWrapper, StyledFormField, Wrapper } from './Notes.styles';
 import Note from 'components/molecules/Note/Note';
 import { useForm } from 'react-hook-form';
 import { useGetNotesQuery, useAddNoteMutation } from 'store';
