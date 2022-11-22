@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialNotificationState = {
-  notifications: [{ id: faker.datatype.uuid(), type: 'ERROR', message: 'Lorem ipsum dolor sit amet' }],
+  notifications: [],
 };
 
 const notificationSlice = createSlice({
