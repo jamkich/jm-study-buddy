@@ -4,10 +4,8 @@ import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
 import { StyledInfo, Wrapper } from './StudentListItem.styles';
 import { UserShape } from 'types';
 import Average from 'components/atoms/Average/Average';
-import { useRemoveStudentMutation } from 'store';
-import { groupsApi } from 'store';
+import { groupsApi, createNotification, useRemoveStudentMutation } from 'store';
 import { useDispatch } from 'react-redux';
-import { createNotification } from 'store';
 
 const StudentListItem = ({ id, studentData: { average, name, attendance = '0%' }, ...props }) => {
   const [removeStudent] = useRemoveStudentMutation();

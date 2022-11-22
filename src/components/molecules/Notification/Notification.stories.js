@@ -1,7 +1,7 @@
 import Notification from './Notification';
 
 export default {
-  title: 'Molecules/Molecules/Notification',
+  title: 'Components/Molecules/Notification',
   component: Notification,
 };
 
