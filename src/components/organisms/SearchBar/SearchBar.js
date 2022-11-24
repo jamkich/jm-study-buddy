@@ -11,6 +11,8 @@ export const SearchBar = () => {
   const [findStudents] = useFindStudentsMutation();
   const dispatch = useDispatch();
 
+  const wait = (amount = 0) => new Promise((resolve) => setTimeout(resolve, amount));
+
   const getMatchingStudents = debounce(async (inputValue) => {
     const {
       data: { students },
@@ -42,14 +44,13 @@ export const SearchBar = () => {
                 key={item.id}
                 isHighlighted={highlightedIndex === index}
                 selectedItem={selectedItem === item}
-                onClick={() => {
+                onClick={async () => {
                   dispatch(setStudentData(item));
                   // modal is overwriting input with [object object] BUG
                   // DONE used setTimeout with min. delay to make it work like should
-                  setTimeout(() => {
-                    setInputValue(item.name);
-                  }, 0.01);
                   dispatch(openModal());
+                  wait();
+                  setInputValue('');
                 }}
               >
                 {item.name}
