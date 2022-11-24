@@ -3,10 +3,8 @@ import { SearchBarWrapper, StatusInfo, SearchWrapper, SearchResults, SearchResul
 import { useCombobox } from 'downshift';
 import debounce from 'lodash.debounce';
 import { Input } from 'components/atoms/Input/Input';
-import { useFindStudentsMutation } from 'store';
+import { useFindStudentsMutation, openModal, setStudentData } from 'store';
 import { useDispatch } from 'react-redux';
-import { openModal } from 'store';
-import { setStudentData } from 'store';
 
 export const SearchBar = () => {
   const [matchingStudents, setMatchingStudents] = useState([]);
@@ -20,7 +18,7 @@ export const SearchBar = () => {
     setMatchingStudents(students);
   }, 500);
 
-  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps, selectedItem } = useCombobox({
+  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps, selectedItem, setInputValue } = useCombobox({
     items: matchingStudents,
     onInputValueChange: getMatchingStudents,
   });
@@ -46,6 +44,11 @@ export const SearchBar = () => {
                 selectedItem={selectedItem === item}
                 onClick={() => {
                   dispatch(setStudentData(item));
+                  // modal is overwriting input with [object object] BUG
+                  // DONE used setTimeout with min. delay to make it work like should
+                  setTimeout(() => {
+                    setInputValue(item.name);
+                  }, 0.01);
                   dispatch(openModal());
                 }}
               >
