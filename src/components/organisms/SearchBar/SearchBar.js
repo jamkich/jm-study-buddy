@@ -49,7 +49,7 @@ export const SearchBar = () => {
                   // modal is overwriting input with [object object] BUG
                   // DONE used setTimeout with min. delay to make it work like should
                   dispatch(openModal());
-                  wait();
+                  await wait();
                   setInputValue('');
                 }}
               >
