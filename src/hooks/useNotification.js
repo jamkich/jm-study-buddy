@@ -20,7 +20,7 @@ export const useNotification = () => {
       case 'WARNING':
         return 'Warning...';
       default:
-        return 'black';
+        return 'Default';
     }
   };
 

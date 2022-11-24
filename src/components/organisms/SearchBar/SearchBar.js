@@ -1,29 +1,10 @@
-import { useState } from 'react';
 import { SearchBarWrapper, StatusInfo, SearchWrapper, SearchResults, SearchResultsItem } from './SearchBar.styles';
-import { useCombobox } from 'downshift';
-import debounce from 'lodash.debounce';
+import { useSearchBar } from 'hooks/useSearchBar';
 import { Input } from 'components/atoms/Input/Input';
-import { useFindStudentsMutation } from 'store';
-import { useDispatch } from 'react-redux';
-import { openModal } from 'store';
-import { setStudentData } from 'store';
 
 export const SearchBar = () => {
-  const [matchingStudents, setMatchingStudents] = useState([]);
-  const [findStudents] = useFindStudentsMutation();
-  const dispatch = useDispatch();
-
-  const getMatchingStudents = debounce(async (inputValue) => {
-    const {
-      data: { students },
-    } = await findStudents(inputValue);
-    setMatchingStudents(students);
-  }, 500);
-
-  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps, selectedItem } = useCombobox({
-    items: matchingStudents,
-    onInputValueChange: getMatchingStudents,
-  });
+  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps, selectedItem, onClickActions, matchingStudents } =
+    useSearchBar();
 
   return (
     <SearchBarWrapper>
@@ -44,10 +25,7 @@ export const SearchBar = () => {
                 key={item.id}
                 isHighlighted={highlightedIndex === index}
                 selectedItem={selectedItem === item}
-                onClick={() => {
-                  dispatch(setStudentData(item));
-                  dispatch(openModal());
-                }}
+                onClick={() => onClickActions(item)}
               >
                 {item.name}
               </SearchResultsItem>

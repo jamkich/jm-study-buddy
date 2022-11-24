@@ -13,7 +13,6 @@ Password: Test123!
 - make some tests 👨🏻‍💻
 - adding/removing users ❌/✅
 - add responsiveness
-  other stuff.. we will see
 - new view (maybe something with map)
 - refactor modal for reuse
 - add some cool ux-stuff to notifications
