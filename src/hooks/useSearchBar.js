@@ -21,7 +21,7 @@ export const useSearchBar = () => {
     onInputValueChange: getMatchingStudents,
   });
 
-  const onClickActions = async (data) => {
+  const handleActions = async (data) => {
     if (data) {
       dispatch(setStudentData(data));
       await dispatch(openModal());
@@ -30,5 +30,5 @@ export const useSearchBar = () => {
 
     return 'No data to use.';
   };
-  return { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps, selectedItem, onClickActions, matchingStudents };
+  return { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps, selectedItem, handleActions, matchingStudents };
 };

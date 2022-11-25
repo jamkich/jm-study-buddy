@@ -14,7 +14,7 @@ const StudentListItem = ({ id, studentData: { average, name, attendance = '0%' }
   const handleRemoveStudent = async (e) => {
     e.stopPropagation();
     await removeStudent({ id: id });
-    dispatch(createNotification({ type: 'SUCCESS', message: 'User has been succesfully deleted.' }));
+    await dispatch(createNotification({ type: 'SUCCESS', message: 'User has been succesfully deleted.' }));
     dispatch(groupsApi.util.invalidateTags(['Students']));
   };
 
