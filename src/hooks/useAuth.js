@@ -35,6 +35,7 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data);
       localStorage.setItem('token', response.data.token);
 
+      dispatch(removeAllNotifications());
       await dispatch(createNotification({ type: 'INFO', message: 'You have been logged in 😁.' }));
     } catch (e) {
       await dispatch(createNotification({ type: 'ERROR', message: 'Invalid email or password.' }));
