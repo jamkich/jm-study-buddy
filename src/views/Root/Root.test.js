@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from 'test-utils';
-import Root from '../Root';
+import Root from './Root';
 
 describe('Root component', () => {
   it('Renders the root component as unauthenticated user', () => {
@@ -14,8 +14,8 @@ describe('Root component', () => {
     const login = screen.getByLabelText('login');
     const password = screen.getByLabelText('password');
 
-    fireEvent.change(login, { target: { value: 'Elo' } });
-    fireEvent.change(password, { target: { value: 'masno' } });
+    fireEvent.change(login, { target: { value: 'Bad' } });
+    fireEvent.change(password, { target: { value: 'Mad' } });
 
     fireEvent.click(screen.getByText('Sign in'));
 
@@ -33,6 +33,6 @@ describe('Root component', () => {
 
     fireEvent.click(screen.getByText('Sign in'));
 
-    await screen.findByText(/faye/i);
+    await screen.findByText(/info/i);
   });
 });

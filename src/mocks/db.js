@@ -1,7 +1,7 @@
 import { factory, primaryKey } from '@mswjs/data';
 import { faker } from '@faker-js/faker';
 
-faker.mersenne.seed(13);
+faker.seed(13);
 
 const groups = ['A', 'B', 'C'];
 const eventTypes = ['workshop', 'exam', 'lecture'];

@@ -23,6 +23,20 @@ export const useNotification = () => {
         return 'Default';
     }
   };
+  const handleColorType = (theme, type) => {
+    switch (type) {
+      case 'ERROR':
+        return theme.colors.error;
+      case 'SUCCESS':
+        return theme.colors.success;
+      case 'INFO':
+        return theme.colors.info;
+      case 'WARNING':
+        return theme.colors.warning;
+      default:
+        return 'black';
+    }
+  };
 
-  return { notifications, handleClose, handleTitleType };
+  return { notifications, handleClose, handleTitleType, handleColorType };
 };
