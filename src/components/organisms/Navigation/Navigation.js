@@ -3,7 +3,7 @@ import React from 'react';
 import { Wrapper, Logo, StyledLink } from './Navigation.styles';
 
 const Navigation = () => {
-  const auth = useAuth();
+  const { signOut } = useAuth();
 
   return (
     <Wrapper>
@@ -15,7 +15,7 @@ const Navigation = () => {
       </Logo>
       <StyledLink to="/group">Dashboard</StyledLink>
       <StyledLink to="/notes">Notes</StyledLink>
-      <StyledLink as="a" onClick={auth.signOut}>
+      <StyledLink as="a" onClick={signOut}>
         <p>Logout</p>
       </StyledLink>
     </Wrapper>
