@@ -20,6 +20,6 @@ export const StyledButton = styled.button`
   transition: transform 0.3s;
 
   &:hover {
-    transform: scale(1.3);
+    transform: ${({ isClicked }) => (isClicked ? 'scale(0.8)' : 'scale(1.2)')};
   }
 `;

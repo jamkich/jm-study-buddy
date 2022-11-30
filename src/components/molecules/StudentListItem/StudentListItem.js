@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
 import { StyledInfo, Wrapper } from './StudentListItem.styles';
@@ -8,6 +8,7 @@ import { groupsApi, createNotification, useRemoveStudentMutation } from 'store';
 import { useDispatch } from 'react-redux';
 
 const StudentListItem = ({ id, studentData: { average, name, attendance = '0%' }, ...props }) => {
+  const [isClicked, setIsClicked] = useState(false);
   const [removeStudent] = useRemoveStudentMutation();
   const dispatch = useDispatch();
 
@@ -23,7 +24,14 @@ const StudentListItem = ({ id, studentData: { average, name, attendance = '0%' }
       <StyledInfo>
         <p>
           {name}
-          <DeleteButton aria-label="Delete" onClick={handleRemoveStudent} />
+          <DeleteButton
+            aria-label="Delete"
+            onClick={(e) => {
+              handleRemoveStudent(e);
+              setIsClicked(true);
+            }}
+            isClicked={isClicked}
+          />
         </p>
         <p>attendance: {attendance}%</p>
       </StyledInfo>
