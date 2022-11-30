@@ -10,9 +10,9 @@ const Note = ({ title = 'Untitled', content = 'No content', id }) => {
   const [removeNote] = useRemoveNoteMutation();
   const dispatch = useDispatch();
 
-  const handleRemoveNote = () => {
+  const handleRemoveNote = async () => {
     removeNote({ id: id });
-    dispatch(createNotification({ type: 'SUCCESS', message: 'Note has been succesfully deleted.' }));
+    await dispatch(createNotification({ type: 'SUCCESS', message: 'Note has been succesfully deleted.' }));
     dispatch({
       type: `${groupsApi}/invalidateTags`,
       payload: ['Students'],

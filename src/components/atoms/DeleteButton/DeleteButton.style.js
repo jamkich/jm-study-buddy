@@ -16,4 +16,10 @@ export const StyledButton = styled.button`
     width: 100%;
     height: 100%;
   }
+
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: ${({ isClicked }) => (isClicked ? 'scale(0.8)' : 'scale(1.2)')};
+  }
 `;

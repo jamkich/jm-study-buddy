@@ -3,7 +3,7 @@ import { Wrapper, StyledTitle, StyledLabel, CloseButton } from './Notification.s
 import { useNotification } from 'hooks/useNotification';
 import PropTypes from 'prop-types';
 
-const Notification = () => {
+const Notification = (props) => {
   const { handleClose, handleTitleType, notifications } = useNotification();
 
   if (notifications) {

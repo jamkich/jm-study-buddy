@@ -18,7 +18,7 @@ const Dashboard = () => {
       data: { student },
     } = await getStudentsById(studentId);
     dispatch(setStudentData(student));
-    dispatch(openModal());
+    await dispatch(openModal());
   };
 
   if (isLoading) {

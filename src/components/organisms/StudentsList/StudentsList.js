@@ -23,7 +23,7 @@ const StudentsList = ({ handleOpenStudentDetails }) => {
             ? data.students.map((userData) => (
                 <StudentListItem onClick={() => handleOpenStudentDetails(userData.id)} id={userData.id} key={userData.id} studentData={userData} />
               ))
-            : dispatch(createNotification({ type: 'error', message: 'There is no students to display 😢.  Try Again.' }))}
+            : dispatch(createNotification({ type: 'ERROR', message: 'There is no students to display 😢.  Try Again.' }))}
         </StyledList>
       )}
     </>

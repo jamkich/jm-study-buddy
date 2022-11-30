@@ -10,6 +10,7 @@ const Template = (args) => <Notification {...args} />;
 export const Default = Template.bind({});
 
 export const ErrorNotification = Template.bind({});
+
 ErrorNotification.args = {
   title: 'Oops! 😒',
   type: 'error',

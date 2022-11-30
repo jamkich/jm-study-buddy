@@ -3,7 +3,7 @@ import { useSearchBar } from 'hooks/useSearchBar';
 import { Input } from 'components/atoms/Input/Input';
 
 export const SearchBar = () => {
-  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps, selectedItem, onClickActions, matchingStudents } =
+  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps, selectedItem, handleActions, matchingStudents } =
     useSearchBar();
 
   return (
@@ -25,7 +25,7 @@ export const SearchBar = () => {
                 key={item.id}
                 isHighlighted={highlightedIndex === index}
                 selectedItem={selectedItem === item}
-                onClick={() => onClickActions(item)}
+                onClick={() => handleActions(item)}
               >
                 {item.name}
               </SearchResultsItem>
