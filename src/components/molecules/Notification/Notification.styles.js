@@ -28,7 +28,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   font-size: ${({ theme }) => theme.fontSize.xm};
-  position: relative;
   padding: 15px;
   position: absolute;
   top: 30px;
@@ -66,4 +65,8 @@ export const CloseButton = styled(DeleteButton)`
   height: 25px;
   border-radius: 7px;
   /* border-radius: 2px; */
+
+  &:hover {
+    transform: scale(0.9);
+  }
 `;
