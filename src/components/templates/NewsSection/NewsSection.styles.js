@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   grid-row: 1/3;
   grid-column: 3/3;
-  border-left: 1px solid ${({ theme }) => theme.colors.darkPurple};
+  border-left: 1px solid ${({ theme }) => theme.colors.darkDetail};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
 export const NewsSectionHeader = styled.h2`
   margin-right: auto;
-  color: ${({ theme }) => theme.colors.darkGrey};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const ArticleWrapper = styled(ViewWrapper)`
@@ -22,7 +22,7 @@ export const ArticleWrapper = styled(ViewWrapper)`
   width: 100%;
   max-width: unset;
   border-radius: 12px;
-  color: ${({ theme }) => theme.colors.darkGrey};
+  color: ${({ theme }) => theme.colors.text};
 
   p {
     line-height: 1.6;

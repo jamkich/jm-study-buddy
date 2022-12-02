@@ -6,7 +6,7 @@ export const Wrapper = styled.nav`
   height: 100%;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid ${({ theme }) => theme.colors.darkPurple};
+  border-right: 1px solid ${({ theme }) => theme.colors.darkDetail};
   justify-content: flex-start;
   padding: 30px 0;
   grid-row: 1 / 3;
@@ -16,7 +16,7 @@ export const Wrapper = styled.nav`
 export const Logo = styled.div`
   width: 100%;
   height: 60px;
-  background-color: ${({ theme }) => theme.colors.darkGrey};
+  background-color: ${({ theme }) => theme.colors.text};
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -33,7 +33,7 @@ export const Logo = styled.div`
 export const StyledLink = styled(NavLink)`
   font-weight: bold;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.darkGrey};
+  color: ${({ theme }) => theme.colors.text};
   text-align: right;
   margin: 15px 20px 15px auto;
   position: relative;
@@ -51,7 +51,7 @@ export const StyledLink = styled(NavLink)`
     top: 50%;
     transform: translateY(-50%);
     right: -20px;
-    background-color: ${({ theme }) => theme.colors.darkPurple};
+    background-color: ${({ theme }) => theme.colors.darkDetail};
   }
 
   &.active::after {

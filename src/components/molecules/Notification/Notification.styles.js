@@ -65,6 +65,7 @@ export const CloseButton = styled(DeleteButton)`
   height: 25px;
   border-radius: 7px;
   /* border-radius: 2px; */
+  stroke: ${({ theme }) => theme.colors.white};
 
   &:hover {
     transform: scale(0.9);

@@ -20,7 +20,7 @@ Password: Test123!
 # ALREADY DONE
 
 - add notification system ✅ (check it out)
-- make modal working with searchBar ✅
+- make modal working with combobox ✅
 - use rtk to make search bar working ✅
 - add some cool ux-stuff to notifications
 - refactor stories with redux (doesnt need)
