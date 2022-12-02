@@ -15,11 +15,12 @@ Password: Test123!
 - add responsiveness
 - new view (maybe something with map)
 - refactor modal for reuse
-- add some cool ux-stuff to notifications
-- refactor stories with redux
+- transfer from msw to firebase (or other backend)
 
 # ALREADY DONE
 
 - add notification system ✅ (check it out)
 - make modal working with searchBar ✅
 - use rtk to make search bar working ✅
+- add some cool ux-stuff to notifications
+- refactor stories with redux (doesnt need)
