@@ -6,12 +6,15 @@ import { ThemeProvider } from 'styled-components';
 import { AuthProvider } from 'hooks/useAuth';
 import { store } from 'store/index';
 import { Provider } from 'react-redux';
+import { useDarkMode } from 'hooks/useDarkMode';
 
 export const AppProviders = ({ children }) => {
+  const [theme] = useDarkMode();
+
   return (
     <Provider store={store}>
       <Router>
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
           <AuthProvider>
             <GlobalStyle />
             {children}

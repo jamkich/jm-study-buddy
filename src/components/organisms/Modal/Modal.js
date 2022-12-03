@@ -12,7 +12,6 @@ const Modal = ({ children }) => {
   const student = useSelector(({ student }) => student);
   const { isOpen } = useSelector((store) => store.modal);
   const theme = useTheme();
-  console.log(theme);
 
   return (
     <ModalWrapper
