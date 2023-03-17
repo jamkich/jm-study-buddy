@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { darkTheme, lightTheme } from 'assets/styles/theme';
@@ -11,10 +11,18 @@ import { useDarkMode } from 'hooks/useDarkMode';
 export const AppProviders = ({ children }) => {
   const [theme] = useDarkMode();
 
+  const checkTheme = () => {
+    if (theme === 'light') return lightTheme;
+    return darkTheme;
+  };
+  useEffect(() => {
+    console.log(theme);
+  });
+
   return (
     <Provider store={store}>
       <Router>
-        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <ThemeProvider theme={checkTheme}>
           <AuthProvider>
             <GlobalStyle />
             {children}

@@ -6,6 +6,7 @@ import Notification from 'components/molecules/Notification/Notification';
 
 const Root = () => {
   const auth = useAuth();
+
   return (
     <>
       <Notification />

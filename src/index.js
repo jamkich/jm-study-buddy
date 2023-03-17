@@ -6,7 +6,7 @@ import Root from 'views/Root/Root';
 import { worker } from 'mocks/browser';
 import { AppProviders } from 'providers/AppProviders';
 
-worker.start().then(
+worker.start().then(() => {
   ReactDOM.render(
     <React.StrictMode>
       <AppProviders>
@@ -14,5 +14,5 @@ worker.start().then(
       </AppProviders>
     </React.StrictMode>,
     document.getElementById('root')
-  )
-);
+  );
+});
