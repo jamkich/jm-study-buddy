@@ -6,6 +6,8 @@ export const useDarkMode = () => {
 
   const setMode = (mode) => {
     window.localStorage.setItem('theme', mode);
+    window.dispatchEvent(new Event('storage'));
+
     setTheme(mode);
   };
 
@@ -19,6 +21,11 @@ export const useDarkMode = () => {
 
     setMountedComponent(true);
   }, [theme]);
+
+  window.addEventListener('storage', () => {
+    const localTheme = window.localStorage.getItem('theme');
+    localTheme && setTheme(localTheme);
+  });
 
   return [theme, themeToggler, mountedComponent];
 };

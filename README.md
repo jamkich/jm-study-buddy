@@ -16,6 +16,7 @@ Password: Test123!
 - new view (maybe something with map)
 - refactor modal for reuse
 - transfer from msw to firebase (or other backend)
+- rebuild with typescript
 
 # ALREADY DONE
 
@@ -24,3 +25,4 @@ Password: Test123!
 - use rtk to make search bar working ✅
 - add some cool ux-stuff to notifications
 - refactor stories with redux (doesnt need)
+  w
