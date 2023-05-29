@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { darkTheme, lightTheme } from 'assets/styles/theme';
