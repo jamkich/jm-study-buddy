@@ -9,7 +9,7 @@ export const NoteWrapper = styled.div`
   h3,
   p {
     margin: 0;
-    color: ${({ theme }) => theme.colors.darkGrey};
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 

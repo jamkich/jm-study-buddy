@@ -19,18 +19,18 @@ export const TitleWrapper = styled.div`
   nav a {
     margin-left: 15px;
     text-decoration: none;
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.white};
     display: inline-block;
     border-radius: 50px;
     width: 30px;
     height: 30px;
     text-align: center;
     padding: 5px;
-    color: ${({ theme }) => theme.colors.darkGrey};
+    color: ${({ theme }) => theme.colors.text};
     font-weight: bold;
   }
 
   nav a:hover {
-    background-color: ${({ theme }) => theme.colors.lightPurple};
+    background-color: ${({ theme }) => theme.colors.lightDetail};
   }
 `;

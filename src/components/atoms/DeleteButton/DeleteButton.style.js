@@ -4,14 +4,15 @@ export const StyledButton = styled.button`
   width: 22px;
   height: 22px;
   margin: 0 10px;
-  background-color: ${({ theme }) => theme.colors.grey};
+  background-color: ${({ theme }) => theme.colors.darkDetail};
   border-radius: 50px;
   border: none;
-  color: white;
+  color: ${({ theme }) => theme.colors.black};
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
   svg {
     width: 100%;
     height: 100%;

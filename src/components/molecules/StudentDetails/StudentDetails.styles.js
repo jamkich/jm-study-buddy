@@ -26,13 +26,13 @@ export const StyledDetails = styled.div`
 
 export const StyledLabel = styled.h3`
   font-size: ${({ theme }) => theme.fontSize.l};
-  color: ${({ theme }) => theme.colors.darkGrey};
+  color: ${({ theme }) => theme.colors.text};
   margin-bottom: 0;
 `;
 
 export const StyledInfo = styled.p`
   font-size: ${({ theme, isBig }) => (isBig ? theme.fontSize.xl : theme.fontSize.l)};
-  color: ${({ theme }) => theme.colors.darkGrey};
+  color: ${({ theme }) => theme.colors.text};
   margin: 10px 20px 20px 0;
 `;
 

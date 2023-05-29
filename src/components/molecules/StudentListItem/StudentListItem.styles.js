@@ -21,7 +21,7 @@ export const StyledInfo = styled.div`
 
   p {
     margin: 0;
-    color: ${({ theme }) => theme.colors.darkGrey};
+    color: ${({ theme }) => theme.colors.text};
   }
 
   p:first-of-type {

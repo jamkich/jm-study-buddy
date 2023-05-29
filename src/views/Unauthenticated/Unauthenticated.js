@@ -3,7 +3,7 @@ import FormField from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
 import { useForm } from 'react-hook-form';
 import { useAuth } from 'hooks/useAuth';
-import { FormWrapper } from './Unauthenticated.styles';
+import { FormWrapper, Wrapper } from './Unauthenticated.styles';
 
 const UnauthenticatedApp = () => {
   const {
@@ -14,7 +14,7 @@ const UnauthenticatedApp = () => {
 
   const { signIn } = useAuth();
   return (
-    <>
+    <Wrapper>
       <FormWrapper onSubmit={handleSubmit(signIn)}>
         {errors.login && <span>Login is required</span>}
         <FormField label="login" name="login" id="login" {...register('login', { required: true })} />
@@ -22,7 +22,7 @@ const UnauthenticatedApp = () => {
         <FormField label="password" name="password" id="password" type="password" {...register('password', { required: true })} />
         <Button type="submit">Sign in</Button>
       </FormWrapper>
-    </>
+    </Wrapper>
   );
 };
 

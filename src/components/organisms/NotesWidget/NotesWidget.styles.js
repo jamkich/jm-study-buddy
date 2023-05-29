@@ -5,26 +5,28 @@ export const Wrapper = styled.div`
   height: auto;
   transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(400px)')};
   transition: transform 0.6s ease-in-out;
+  background-color: ${({ theme }) => theme.colors.white};
   max-height: 700px;
   position: absolute;
   right: 0;
   top: 40px;
-  background: white;
-  border: 2px solid ${({ theme }) => theme.colors.darkGrey};
+  border: 2px solid ${({ theme }) => theme.colors.text};
+  border-radius: 2px;
 `;
 
 export const WidgetHandler = styled.button`
   width: 80px;
   height: 30px;
-  background-color: ${({ theme }) => theme.colors.darkGrey};
+  background-color: ${({ theme }) => theme.colors.background};
   transform: rotate(-90deg);
   position: absolute;
   left: -55px;
   border-radius: 8px 8px 0 0;
   top: 40px;
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   border: none;
   cursor: pointer;
+  border: 2px solid ${({ theme }) => theme.colors.text};
 `;
 
 export const NotesWrapper = styled.div`
