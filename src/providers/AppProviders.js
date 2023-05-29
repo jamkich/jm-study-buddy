@@ -15,9 +15,6 @@ export const AppProviders = ({ children }) => {
     if (theme === 'light') return lightTheme;
     return darkTheme;
   };
-  useEffect(() => {
-    console.log(theme);
-  });
 
   return (
     <Provider store={store}>
