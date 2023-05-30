@@ -3,9 +3,7 @@ import { useSearchBar } from 'hooks/useSearchBar';
 import { Input } from 'components/atoms/Input/Input';
 
 export const SearchBar = () => {
-  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps, selectedItem, handleActions, matchingStudents } =
-    useSearchBar();
-
+  const { isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps, selectedItem, handleActions, matchingStudents } = useSearchBar();
   return (
     <SearchBarWrapper>
       <StatusInfo>
@@ -15,7 +13,7 @@ export const SearchBar = () => {
         </p>
       </StatusInfo>
 
-      <SearchWrapper {...getComboboxProps()}>
+      <SearchWrapper>
         <Input {...getInputProps()} name="Search" id="Search" placeholder="Search" />
         <SearchResults isVisible={isOpen && matchingStudents.length} {...getMenuProps()} aria-label="results">
           {isOpen &&
@@ -25,7 +23,9 @@ export const SearchBar = () => {
                 key={item.id}
                 isHighlighted={highlightedIndex === index}
                 selectedItem={selectedItem === item}
-                onClick={() => handleActions(item)}
+                onClick={() => {
+                  handleActions(item);
+                }}
               >
                 {item.name}
               </SearchResultsItem>
