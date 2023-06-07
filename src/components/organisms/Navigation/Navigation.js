@@ -7,7 +7,6 @@ import { useDarkMode } from 'hooks/useDarkMode';
 const Navigation = () => {
   const { signOut } = useAuth();
   const [theme, themeToggler, mountedComponent] = useDarkMode();
-
   if (!mountedComponent) return <div />;
 
   return (

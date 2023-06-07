@@ -11,7 +11,7 @@ const notificationSlice = createSlice({
   reducers: {
     createNotification: (state, action) => {
       state.notifications.push({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         type: action.payload.type,
         message: action.payload.message,
       });

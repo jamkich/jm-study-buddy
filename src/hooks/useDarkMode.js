@@ -9,6 +9,7 @@ export const useDarkMode = () => {
     window.dispatchEvent(new Event('storage'));
 
     setTheme(mode);
+    return;
   };
 
   const themeToggler = () => {
