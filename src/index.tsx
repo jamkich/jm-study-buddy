@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import 'index.css';
 import 'assets/styles/fonts.css';
@@ -8,12 +8,14 @@ import { AppProviders } from 'providers/AppProviders';
 
 worker.start().then(() => {
   const container = document.getElementById('root');
+  if (!container) throw new Error('Failed to find root element');
+
   const root = createRoot(container);
   root.render(
-    <React.StrictMode>
+    <StrictMode>
       <AppProviders>
         <Root />
       </AppProviders>
-    </React.StrictMode>
+    </StrictMode>
   );
 });
